@@ -1498,8 +1498,8 @@ input, select, textarea {
 			margin: 0 0 2em 0;
 		}
 
-		.image-fit {
-			display: block;
+		.image.fit {
+			display: flex;
 			width: 200px;
 			height: 200px;
 		}
@@ -1888,7 +1888,27 @@ input, select, textarea {
 			}
 
 				.box.style1.left .image img {
-					left: 0;
+				}
+
+				.box.style1.left.REEM .image img {
+					padding-right: 20%;
+					padding-left: 20%
+				}
+				.box.style1.left.LBCC .image img {
+					padding-right: 10%;
+					padding-left: 10%
+				}
+				.box.style1.left.HFE .image img {
+					padding-top: 10%;
+					height: auto;
+					width: 100%;
+					padding-bottom: 10%;
+				}
+				.box.style1.left.Vivaldia .image img {
+					padding-top: 6%;
+					height: auto;
+					width: 100%;
+					padding-bottom: 6%;
 				}
 
 			.box.style1.left .inner {
