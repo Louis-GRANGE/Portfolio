@@ -84,8 +84,8 @@ input, select, textarea {
 
 	body {
 		background-color: #183026;
-		background-image: url("images/overlay.png"), url("../../images/bg.jpg");
-		background-repeat: repeat, no-repeat;
+		background-image: url("images/overlay.png"), url("../../images/background1.png");
+		/*background-repeat: repeat, no-repeat;*/
 		background-size: auto, cover;
 		background-position: top left, center 0;
 		background-attachment: fixed, fixed;
@@ -165,10 +165,68 @@ input, select, textarea {
 		text-decoration: none;
 		border-bottom: dotted 1px rgba(53, 184, 143, 0.5);
 	}
+	a:hover {
+		border-bottom-color: rgba(53, 184, 143, 0);
+	}
+	/*------- {{ effect-5 }} -------*/
+	@media screen and (max-width: 768px) {
+	  h2 {
+	    width: 100%;
+	  }
+	}
 
-		a:hover {
-			border-bottom-color: rgba(53, 184, 143, 0);
-		}
+	a, a > span {
+	  position: relative;
+	  color: inherit;
+	  text-decoration: none;
+	  line-height: 24px;
+	}
+	a:before, a:after, a > span:before, a > span:after {
+	  content: '';
+	  position: absolute;
+	  transition: transform .5s ease;
+	}
+	.effect-5 {
+	  display: inline-block;
+	  overflow: hidden;
+	}
+	.effect-5:before, .effect-5:after {
+	  right: 0;
+	  bottom: 0;
+	  background: #0883a4;
+	}
+	.effect-5:before {
+	  width: 100%;
+	  height: 2px;
+	  transform: translateX(-100%);
+	}
+	.effect-5:after {
+	  width: 2px;
+	  height: 100%;
+	  transform: translateY(100%);
+	}
+	.effect-5 > span {
+	  display: block;
+	  padding: 10px;
+	}
+	.effect-5 > span:before, .effect-5 > span:after {
+	  left: 0;
+	  top: 0;
+	  background: #0883a4;
+	}
+	.effect-5 > span:before {
+	  width: 100%;
+	  height: 2px;
+	  transform: translateX(100%);
+	}
+	.effect-5 > span:after {
+	  width: 2px;
+	  height: 100%;
+	  transform: translateY(-100%);
+	}
+	.effect-5:hover:before, .effect-5:hover:after, .effect-5:hover > span:before, .effect-5:hover > span:after {
+	  transform: translate(0, 0);
+	}
 
 	sub {
 		position: relative;
@@ -1809,6 +1867,26 @@ input, select, textarea {
 				background: rgba(58, 57, 57, 0.025);
 			}
 
+		input[type="button"].style4,
+		input[type="submit"].style4,
+		input[type="reset"].style4,
+		button.style4,
+		.button.style4 {
+			color: #49B5FF;
+			background: #D7FFDE;
+			box-shadow: inset 0 0 0 1px #D7FFDE;
+		}
+
+			input[type="button"].style4:hover,
+			input[type="submit"].style4:hover,
+			input[type="reset"].style4:hover,
+			button.style4:hover,
+			.button.style4:hover {
+				background: rgba(255, 255, 255, 0.1);
+				color: #fff !important;
+				text-shadow: 0 0 0.5px rgba(255, 255, 255, 0.25) !important;
+			}
+
 /* Box */
 
 	.box {
@@ -2667,3 +2745,4 @@ input, select, textarea {
 			}
 
 	}
+}
