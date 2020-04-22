@@ -60,6 +60,14 @@ mark {
 	color: inherit;
 }
 
+span.right {
+	margin-left: 50%;
+}	
+.green
+{
+	color: #1d9800;
+}
+
 input::-moz-focus-inner {
 	border: 0;
 	padding: 0;
