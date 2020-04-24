@@ -1895,6 +1895,27 @@ input, select, textarea {
 				text-shadow: 0 0 0.5px rgba(255, 255, 255, 0.25) !important;
 			}
 
+		input[type="button"].style5,
+		input[type="submit"].style5,
+		input[type="reset"].style5,
+		button.style5,
+		.button.style5 {
+			display: block;
+			margin-top: 10px;
+			margin-left:auto;
+      		margin-right:auto;
+			background: #ffffff;
+			color: #1d9800;
+			box-shadow: inset 0 0 0 1px #dad9d9;
+		}
+
+			input[type="button"].style5:hover,
+			input[type="submit"].style5:hover,
+			input[type="reset"].style5:hover,
+			button.style5:hover,
+			.button.style5:hover {
+				background: rgba(58, 57, 57, 0.025);
+			}
 /* Box */
 
 	.box {
@@ -2031,6 +2052,15 @@ input, select, textarea {
     				padding-bottom: auto;
     				width: 100%;
   					height: auto;
+				}
+				.box.style1.left.Incubator .image img {
+					display: flex;
+					position: relative;
+					margin-left: auto;
+    				margin-right: auto;
+    				padding-top: 0%;
+    				height: 100%;
+    				width: auto;
 				}
 
 			.box.style1.left .inner {
