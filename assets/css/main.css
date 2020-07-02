@@ -73,6 +73,40 @@ input::-moz-focus-inner {
 	padding: 0;
 }
 
+#chatbot {
+	transform: rotateZ(180deg);
+	resize: both;
+  	overflow: auto;
+	position: fixed;
+	/*background-color: #0B556A;*/
+	bottom: 20px;
+	right: 30px;
+	width: 15vw;
+	height: 40vh;
+	z-index: 2; 
+}
+.chatbotcontaint
+{
+	/*margin-top: -100px;*/
+	overflow: visible !important;
+	padding-bottom: 40px;
+	transform: rotateZ(180deg);
+	height: 100%;
+	width: 100%;
+}
+
+#chatbotbutton
+{
+	position: relative;
+	width: 100%;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	z-index: 5;
+	font-size: 15px;
+	text-align: center;
+}
+
+
 input, select, textarea {
 	-moz-appearance: none;
 	-webkit-appearance: none;

@@ -103,3 +103,28 @@
 		});
 
 })(jQuery);
+
+
+
+function HideShowChatBot() {
+  var chatdiv = document.getElementById("chatbot");
+  var btn = document.getElementById("chatbotbutton");
+  /*if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }*/
+  if (chatdiv.style.height === "5vh") {
+  	btn.firstChild.data = "CLOSE";
+
+  	chatdiv.style.resize = "both";
+    chatdiv.style.width = "15vw";
+	chatdiv.style.height = "40vh";
+  } else {
+  	btn.firstChild.data = "OPEN";
+
+  	chatdiv.style.resize = "none";
+    chatdiv.style.width = "10vw";
+	chatdiv.style.height = "5vh";
+  }
+}
