@@ -163,7 +163,7 @@ var myGameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
         this.canvas.width = window.innerWidth - 20;
-        this.canvas.height = document.body.scrollHeight;//window.innerHeight;
+        this.canvas.height = document.body.scrollHeight + window.innerHeight / 4;//window.innerHeight;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
@@ -172,7 +172,7 @@ var myGameArea = {
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         if (this.canvas.width != window.innerWidth) {this.canvas.width = window.innerWidth - 20;}
-        if (this.canvas.height != window.innerHeight) {this.canvas.height = document.body.scrollHeight;}//window.innerHeight;}
+        if (this.canvas.height != window.innerHeight) {this.canvas.height = document.body.scrollHeight + window.innerHeight / 4;}//window.innerHeight;}
     }
 }
 
@@ -364,7 +364,7 @@ var lastMousePosY;
 function MovePiece(event)
 {
   	lastMousePosX = event.clientX;
-	lastMousePosY = event.clientY;
+	lastMousePosY = event.clientY + window.scrollY;
 }
 
 setInterval(function() {
@@ -379,7 +379,7 @@ setInterval(function() {
 function SetPieceToMove(event)
 {
 	var x = event.clientX;
-  	var y = event.clientY;
+  	var y = event.clientY + window.scrollY;
   	//console.log("MousePos: ", x, " ", y);
   	if (Target == null)
   	{
