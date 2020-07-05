@@ -128,3 +128,286 @@ function HideShowChatBot() {
 	chatdiv.style.height = "5vh";
   }
 }
+
+
+var GamePieces = [];
+var myGamePiece;
+var myObstacles = [];
+var isMovingAllTime = false;
+var Target;
+
+function addPiece()
+{
+	myGamePiece = new component(30, 30, "#07B5A7", RandInt(window.innerWidth/2 + 22.5 - window.innerWidth/4, window.innerWidth/2 + 22.5 + window.innerHeight/4), RandInt(window.innerHeight/2 - window.innerHeight/4, window.innerHeight/2 + window.innerHeight/4));
+	myGamePiece.gravity = 0.05;
+	SetToAllBaseColor();
+	myObstacles.push(myGamePiece);
+	GamePieces.push(myGamePiece);
+}
+
+function startGame() {
+    //myGamePiece = new component(30, 30, "red", 10, 120);
+    //myGamePiece.gravity = 0.05;
+    
+    myObstacles.push(new component(415, 33, "rgba(0, 0, 0, 0)", 739, 363));
+    myGamePiece = new component(30, 30, "#07B5A7", window.innerWidth/2 - 22.5, innerHeight/2 - 22.5);
+	myGamePiece.gravity = 0.05;
+	SetToAllBaseColor();
+	myObstacles.push(myGamePiece);
+	GamePieces.push(myGamePiece);
+    myGameArea.start();
+    //GamePieces.push(myGamePiece);
+}
+
+var myGameArea = {
+    canvas : document.createElement("canvas"),
+    start : function() {
+        this.canvas.width = window.innerWidth - 20;
+        this.canvas.height = document.body.scrollHeight;//window.innerHeight;
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        this.frameNo = 0;
+        this.interval = setInterval(updateGameArea, 20);
+        },
+    clear : function() {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        if (this.canvas.width != window.innerWidth) {this.canvas.width = window.innerWidth - 20;}
+        if (this.canvas.height != window.innerHeight) {this.canvas.height = document.body.scrollHeight;}//window.innerHeight;}
+    }
+}
+
+function component(widthparam, heightparam, color, x, y, type) {
+    this.type = type;
+    this.score = 0;
+    this.width = widthparam;
+    this.height = heightparam;
+    this.speedX = 0;
+    this.speedY = 0;    
+    this.x = x;
+    this.y = y;
+    this.colorstyle = color;
+    this.gravity = 0;
+    this.gravitySpeed = 0;
+    this.heightground = Infinity;
+    this.update = function() {
+        ctx = myGameArea.context;
+        ctx.fillStyle = this.colorstyle;
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
+    this.newPos = function() {
+    	this.x += this.speedX;
+        this.gravitySpeed += this.gravity;
+    	if (this.gravity != 0)
+        {
+        	this.y += this.speedY + this.gravitySpeed;
+        }
+        
+        this.hitBottom();
+    }
+
+    this.hitBottomheight = function() {
+    	var myleft = this.x;
+        var myright = this.x + (this.width);
+        var mytop = this.y;
+        var mybottom = this.y + (this.height);
+
+        for (var i = 0; i < myObstacles.length; i += 1)
+        {
+        	var otherleft = myObstacles[i].x;
+	        var otherright = myObstacles[i].x + (myObstacles[i].width);
+
+	        var othertop = myObstacles[i].y;
+	        var otherbottom = myObstacles[i].y + (myObstacles[i].height);
+        	if (this != myObstacles[i])
+        	{
+		        if(Math.abs((myleft - otherleft)) < this.width || Math.abs((myright - otherright)) < myObstacles[i].width && Math.abs((myleft - otherleft)) < myObstacles[i].width || Math.abs((myright - otherright)) < this.width)
+		        {
+		        	if(Math.abs((mytop - othertop)) < this.height || Math.abs((mybottom - otherbottom)) < this.height)
+		        	{
+		        		return (othertop - this.height);
+		        	}
+		        }
+		    }
+		}
+		return (window.innerHeight + window.scrollY - 30)//myGameArea.canvas.height - this.height);
+
+    }
+
+    this.hitBottom = function() {
+        var rockbottom = window.innerHeight + window.scrollY - 30;//myGameArea.canvas.height - this.height;
+        if(this.heightground > rockbottom)
+        	this.heightground = rockbottom;
+        else
+			this.heightground = this.hitBottomheight();
+        
+
+        if (this.y > this.heightground) {
+        	this.y = this.heightground;
+        	this.gravity = 0.05;
+        	this.gravitySpeed = 0;
+        }
+    }
+    this.crashWith = function(otherobj) {
+        var myleft = this.x;
+        var myright = this.x + (this.width);
+        var mytop = this.y;
+        var mybottom = this.y + (this.height);
+        var otherleft = otherobj.x;
+        var otherright = otherobj.x + (otherobj.width);
+        var othertop = otherobj.y;
+        var otherbottom = otherobj.y + (otherobj.height);
+        var crash = true;
+
+        if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright))
+            crash = false;
+
+        return crash;
+    }
+}
+
+function updateGameArea() {
+    myGameArea.clear();
+    for (var i = 0; i < myObstacles.length; i += 1) {
+    	for (var j = 0; j <= GamePieces.length - 1; j++) {
+	    	if (GamePieces[j] != myObstacles[i]) {
+	    		
+	    	}
+	    }
+	}
+
+    for (var i = 0; i < myObstacles.length; i += 1) {
+        myObstacles[i].update();
+    }
+
+    for (var i = 0; i <= GamePieces.length - 1; i++) {
+    	GamePieces[i].newPos();
+    	GamePieces[i].update();
+    }
+}
+
+function everyinterval(n) {
+    if ((myGameArea.frameNo / n) % 1 == 0) {return true;}
+    return false;
+}
+
+function accelerate(n) {
+    myGamePiece.gravity = n;
+}
+
+document.addEventListener('keydown', function(e) {
+	if (e.key == '+') {
+		addPiece();
+	}
+  	//alert (`You pressed the "${e.key}"`);
+  	if (e.key == 'd') {
+	  	myGamePiece.speedX = 5;
+  	}
+  	if (e.key == 'q') {
+  		myGamePiece.speedX = -5;
+  	}
+  	if (e.key == 'z') {
+  		accelerate(-0.2)
+  	}
+  	if (e.key == 'a') {
+  		for (var i = 0; i < GamePieces.length; i += 1)
+        {
+        	if (myGamePiece == GamePieces[i] && i > 0)
+        	{
+        		myGamePiece.colorstyle = "#068075";
+        		myGamePiece = GamePieces[i - 1];
+        		myGamePiece.colorstyle = "#07B5A7";
+        		return;
+		    }
+		}
+  	}
+  	if (e.key == 'e') {
+  		for (var i = 0; i < GamePieces.length; i += 1)
+        {
+        	if (myGamePiece == GamePieces[i] && i < GamePieces.length - 1)
+        	{
+        		myGamePiece.colorstyle = "#068075";
+        		myGamePiece = GamePieces[i + 1];
+        		myGamePiece.colorstyle = "#07B5A7";
+        		return;
+		    }
+		}
+  	}
+  	if (e.key == 'r') {
+  		for (var i = 0; i < GamePieces.length; i += 1)
+        {
+        	if (myGamePiece == GamePieces[i] && i < GamePieces.length - 1)
+        	{
+        		myGamePiece.colorstyle = "#068075";
+        		myGamePiece = GamePieces[i + 1];
+        		myGamePiece.colorstyle = "#07B5A7";
+        		return;
+		    }
+		}
+  	}
+
+});
+document.addEventListener('keyup', function(e) {
+  	//alert (`You pressed the "${e.key}"`);
+  	if (e.key == 'd') {
+  		if (!isMovingAllTime) {myGamePiece.speedX = 0;}
+  	}
+  	if (e.key == 'q') {
+  		if (!isMovingAllTime) {myGamePiece.speedX = 0;}
+  	}
+  	if (e.key == 'z') {
+  		accelerate(0.05)
+  	}
+});
+
+var lastMousePosX;
+var lastMousePosY; 
+function MovePiece(event)
+{
+  	lastMousePosX = event.clientX;
+	lastMousePosY = event.clientY;
+}
+
+setInterval(function() {
+	if (Target) {
+		Target.x = lastMousePosX - Target.width/2;
+		Target.y = lastMousePosY - Target.height/2;
+		Target.gravity = 0.05;
+		Target.gravitySpeed = 0;
+	}
+}, 5);
+
+function SetPieceToMove(event)
+{
+	var x = event.clientX;
+  	var y = event.clientY;
+  	//console.log("MousePos: ", x, " ", y);
+  	if (Target == null)
+  	{
+	  	for (var i = GamePieces.length - 1; i >= 0; i--) {
+	  		if(x >= GamePieces[i].x && y >= GamePieces[i].y && x <= GamePieces[i].x + GamePieces[i].width && y <= GamePieces[i].y + GamePieces[i].height)
+	  		{
+	  			Target = GamePieces[i];
+	  			SetToAllBaseColor();
+	  			Target.colorstyle = "#07B5A7";
+	  			myGamePiece = Target;
+	  		}
+	  	}
+	}
+	else
+	{
+		Target = null;
+	}
+}
+
+function SetToAllBaseColor()
+{
+	for (var i = 0; i < GamePieces.length; i += 1)
+    {
+       	GamePieces[i].colorstyle = "#068075";
+	}
+}
+
+function RandInt(min, max)
+{
+ return Math.floor(Math.random() * (max - min + 1)) + min;
+}
