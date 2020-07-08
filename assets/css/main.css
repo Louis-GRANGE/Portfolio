@@ -2019,25 +2019,58 @@ input, select, textarea {
 					right: 0;
 				}
 				
-				.box.style1.right.SS .image img {
-					display: flex;
-					position: relative;
-    				margin-left: auto;
-    				margin-right: auto;
-    				padding-top: 15%;
-    				padding-bottom: auto;
+				.box.style1.right.Horizontal .image img {
+					display: block;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					-webkit-transform: translate(-50%, -50%); /* Safari and Chrome */
+					-moz-transform: translate(-50%, -50%); /* Firefox */
+					-ms-transform: translate(-50%, -50%); /* IE 9 */
+					-o-transform: translate(-50%, -50%); /* Opera */
     				width: 100%;
   					height: auto;
 				}
+				.box.style1.right.Vertical .image img {
+					display: block;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					-webkit-transform: translate(-50%, -50%); /* Safari and Chrome */
+					-moz-transform: translate(-50%, -50%); /* Firefox */
+					-ms-transform: translate(-50%, -50%); /* IE 9 */
+					-o-transform: translate(-50%, -50%); /* Opera */
+					height: 100%;
+					width: auto;
+				}
 				.box.style1.right.Fallen .image img {
-					display: flex;
-					position: relative;
-    				margin-left: auto;
-    				margin-right: auto;
-    				padding-top: 15%;
-    				padding-bottom: auto;
-    				width: 100%;
-  					height: auto;
+					display: block;
+					position: absolute;
+					top: 25%;
+					left: 50%;
+					z-index: 1;
+					transform: translate(-50%, -50%);
+					-webkit-transform: translate(-50%, -50%); /* Safari and Chrome */
+					-moz-transform: translate(-50%, -50%); /* Firefox */
+					-ms-transform: translate(-50%, -50%); /* IE 9 */
+					-o-transform: translate(-50%, -50%); /* Opera */
+					width: 100%;
+					height: auto;
+				}
+				.box.style1.right.Fallen .image iframe {
+					display: block;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					-webkit-transform: translate(-50%, -50%); /* Safari and Chrome */
+					-moz-transform: translate(-50%, -50%); /* Firefox */
+					-ms-transform: translate(-50%, -50%); /* IE 9 */
+					-o-transform: translate(-50%, -50%); /* Opera */
+					width: 100%;
+					height: auto;
 				}
 			.box.style1.right .inner {
 				margin-left: 50%;
@@ -2051,48 +2084,29 @@ input, select, textarea {
 				.box.style1.left .image img {
 				}
 
-				.box.style1.left.REEM .image img {
-					display: flex;
-					position: relative;
-    				margin-left: auto;
-    				margin-right: auto;
-  					height: 100%;
-  					width: auto;
-				}
-				.box.style1.left.LBCC .image img {
-					display: flex;
-					position: relative;
-    				margin-left: auto;
-    				margin-right: auto;
-    				width: 100%;
+				.box.style1.left.Horizontal .image img {
+					display: block;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					-webkit-transform: translate(-50%, -50%); /* Safari and Chrome */
+					-moz-transform: translate(-50%, -50%); /* Firefox */
+					-ms-transform: translate(-50%, -50%); /* IE 9 */
+					-o-transform: translate(-50%, -50%); /* Opera */
+					width: 100%;
   					height: auto;
 				}
-				.box.style1.left.HFE .image img {
-					display: flex;
-					position: relative;
-					margin-left: auto;
-    				margin-right: auto;
-    				padding-top: 18%;
-    				padding-bottom: auto;
-    				width: 100%;
-  					height: auto;
-				}
-				.box.style1.left.Vivaldia .image img {
-					display: flex;
-					position: relative;
-					margin-left: auto;
-    				margin-right: auto;
-    				padding-top: 18%;
-    				padding-bottom: auto;
-    				width: 100%;
-  					height: auto;
-				}
-				.box.style1.left.Incubator .image img {
-					display: flex;
-					position: relative;
-					margin-left: auto;
-    				margin-right: auto;
-    				padding-top: 0%;
+				.box.style1.left.Vertical .image img {
+					display: block;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					-webkit-transform: translate(-50%, -50%); /* Safari and Chrome */
+					-moz-transform: translate(-50%, -50%); /* Firefox */
+					-ms-transform: translate(-50%, -50%); /* IE 9 */
+					-o-transform: translate(-50%, -50%); /* Opera */
     				height: 100%;
     				width: auto;
 				}
