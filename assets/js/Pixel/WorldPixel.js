@@ -1,5 +1,7 @@
 var ColorPalette = ["#35b88f", "#152E33", "#23233a", "#9099cd", "#4d529a", "#dddddd"]
 var PixelColor = "#23233a";
+var AllPixelTypeCanSpawn = [Sand, Rock, Water, Wood];
+var PixelTypeToSpawn = Pixel;
 
 const GravityDirection = {
     UP: 'UP',
@@ -51,7 +53,9 @@ var PixelArea = {
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
         this.interval = setInterval(updatePixelArea, 10);
-        this.interval = setInterval(updatePixelColor, 1000);
+        this.intervalColor = setInterval(updatePixelColor, 1000);
+        this.intervalPixelType = setInterval(updatePixelTypeToSpawn, 1000);
+
         },
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -101,6 +105,11 @@ function updatePixelArea() {
 function updatePixelColor()
 {
 	PixelColor = ColorPalette[Math.floor(Math.random() * ColorPalette.length)];
+}
+
+function updatePixelTypeToSpawn()
+{
+	PixelTypeToSpawn = AllPixelTypeCanSpawn[Math.floor(Math.random() * AllPixelTypeCanSpawn.length)];
 }
 
 function UpdatePixelAreaByCurrentGravity()
@@ -178,7 +187,7 @@ function startPixelWorld() {
     //myGamePiece = new component(30, 30, "red", 10, 120);
     //myGamePiece.gravity = 0.05;
     console.log("StartPixel");
-    addPixelAtCenter();
+    addPixelAtCenter(Sand);
     PixelArea.start();
 }
 
@@ -188,6 +197,54 @@ function resetPixelWorld()
 	WorldPixelNext = new Array(Math.floor(window.innerWidth/CellSize));
 	for (var x = 0; x < WorldPixelNext.length; x++) {
 		WorldPixelNext[x] = new Array(Math.floor(window.innerHeight / CellSize));
+	}
+}
+
+function addPixel(PixelClass, v)
+{
+	if(IsValidPos(v) && !WorldPixel[v.x][v.y])
+		var NewPixel = new PixelClass(v);
+}
+function addPixelAtCenter(PixelClass)
+{
+	addPixel(PixelClass, new vector2D(Math.floor(window.innerWidth/(2*CellSize)), Math.floor(window.innerHeight/(2*CellSize))));
+}
+
+function addPixels(n)
+{
+	for(var i = 0; i < n; i++)
+	{
+		new Pixel("#07B5A7", new vector2D(Math.floor(window.innerWidth/(2*CellSize)), Math.floor(window.innerHeight/(2*CellSize))));
+	}
+}
+
+function addPixelsInCircle(PixelClass, pos, range)
+{
+	for(var i = pos.x - range; i < pos.x + range; i++)
+	{
+		for(var j = pos.y - range; j < pos.y + range; j++)
+		{
+			var SpawnPos = new vector2D(i,j);
+			if(SpawnPos.dist(pos) < range && IsValidPos(SpawnPos))
+			{
+				addPixel(PixelClass, SpawnPos);
+			}
+		}
+	}
+}
+
+function removePixelsInCircle(pos, range)
+{
+	for(var i = pos.x - range; i < pos.x + range; i++)
+	{
+		for(var j = pos.y - range; j < pos.y + range; j++)
+		{
+			var RemovePix = new vector2D(i,j);
+			if(RemovePix.dist(pos) < range && IsValidPos(RemovePix))
+			{
+                WorldPixelNext[i][j] = null;
+			}
+		}
 	}
 }
 

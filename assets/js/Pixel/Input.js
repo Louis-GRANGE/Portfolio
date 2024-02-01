@@ -7,7 +7,7 @@ document.addEventListener('click', function(event) {
 	const mouseX = event.clientX;
 	const mouseY = event.clientY;
 
-	addPixelsInCircle(new vector2D(Math.floor(mouseX/CellSize), Math.floor(mouseY/CellSize)), 10);
+	addPixelsInCircle(PixelTypeToSpawn, new vector2D(Math.floor(mouseX/CellSize), Math.floor(mouseY/CellSize)), 10);
 });
 
 // Ajoutez un gestionnaire d'événements pour le clic droit
