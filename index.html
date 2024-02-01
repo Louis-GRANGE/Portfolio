@@ -24,12 +24,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<style>
 			canvas {
-				position: absolute;
+				position: fixed;
 			}
 		</style>
 	</head>
-	<body onload="startGame()" onmousemove="MovePiece(event)" onmousedown="SetPieceToMove(event)">
-	</body>
+	<!--<body onload="startGame()" onmousemove="MovePiece(event)" onmousedown="SetPieceToMove(event)">-->
+	<!--<body onload="startPixelWorld()">
+
+	</body>-->
 
 	<head>
 		<title>GRANGE Louis</title>
@@ -511,7 +513,13 @@
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+
+			<script src="assets/js/Pixel/Tools.js"></script>
+			<script src="assets/js/Pixel/vector.js"></script>
+			<script src="assets/js/Pixel/Pixel.js"></script>
+			<script src="assets/js/Pixel/WorldPixel.js"></script>
+			<script src="assets/js/Pixel/main.js"></script>
+			<script src="assets/js/Pixel/Input.js"></script>
 
 	</body>
 </html>

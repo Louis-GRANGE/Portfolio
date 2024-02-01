@@ -3,7 +3,6 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
-
 (function($) {
 
 	var	$window = $(window),
@@ -105,7 +104,7 @@
 })(jQuery);
 
 
-
+HideShowChatBot();
 function HideShowChatBot() {
   var chatdiv = document.getElementById("chatbot");
   var btn = document.getElementById("chatbotbutton");
@@ -130,6 +129,7 @@ function HideShowChatBot() {
 }
 
 
+
 var GamePieces = [];
 var myGamePiece;
 var myObstacles = [];
@@ -140,7 +140,6 @@ function addPiece()
 {
 	myGamePiece = new component(30, 30, "#07B5A7", RandInt(window.innerWidth/2 + 22.5 - window.innerWidth/4, window.innerWidth/2 + 22.5 + window.innerHeight/4), RandInt(window.innerHeight/2 - window.innerHeight/4, window.innerHeight/2 + window.innerHeight/4));
 	myGamePiece.gravity = 0.05;
-	SetToAllBaseColor();
 	myObstacles.push(myGamePiece);
 	GamePieces.push(myGamePiece);
 }
@@ -149,13 +148,13 @@ function startGame() {
     //myGamePiece = new component(30, 30, "red", 10, 120);
     //myGamePiece.gravity = 0.05;
     
-    myObstacles.push(new component(415, 33, "rgba(0, 0, 0, 0)", 739, 363));
+    /*myObstacles.push(new component(415, 33, "rgba(0, 0, 0, 0)", 739, 363));
     myGamePiece = new component(30, 30, "#07B5A7", window.innerWidth/2 - 22.5, innerHeight/2 - 22.5);
 	myGamePiece.gravity = 0.05;
 	SetToAllBaseColor();
 	myObstacles.push(myGamePiece);
 	GamePieces.push(myGamePiece);
-    myGameArea.start();
+    myGameArea.start();*/
     //GamePieces.push(myGamePiece);
 }
 
@@ -175,6 +174,8 @@ var myGameArea = {
         if (this.canvas.height != window.innerHeight) {this.canvas.height = document.body.scrollHeight + window.innerHeight / 4;}//window.innerHeight;}
     }
 }
+
+
 
 function component(widthparam, heightparam, color, x, y, type) {
     this.type = type;
@@ -295,9 +296,6 @@ function accelerate(n) {
 }
 
 document.addEventListener('keydown', function(e) {
-	if (e.key == '+') {
-		addPiece();
-	}
   	//alert (`You pressed the "${e.key}"`);
   	if (e.key == 'd') {
 	  	myGamePiece.speedX = 5;
@@ -359,14 +357,6 @@ document.addEventListener('keyup', function(e) {
   	}
 });
 
-var lastMousePosX;
-var lastMousePosY; 
-function MovePiece(event)
-{
-  	lastMousePosX = event.clientX;
-	lastMousePosY = event.clientY + window.scrollY;
-}
-
 setInterval(function() {
 	if (Target) {
 		Target.x = lastMousePosX - Target.width/2;
@@ -405,9 +395,4 @@ function SetToAllBaseColor()
     {
        	GamePieces[i].colorstyle = "#068075";
 	}
-}
-
-function RandInt(min, max)
-{
- return Math.floor(Math.random() * (max - min + 1)) + min;
 }
