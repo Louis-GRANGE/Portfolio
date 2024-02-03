@@ -5,7 +5,7 @@ class Pixel
 		this.width = CellSize;
 		this.height = CellSize;
 		this.pos = pos;
-		this.colorPalette = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00']; // Ajoutez d'autres couleurs selon vos besoins
+		this.colorPalette = ColorPalette;//['#FF0000', '#00FF00', '#0000FF', '#FFFF00']; // Ajoutez d'autres couleurs selon vos besoins
         this.colorstyle = this.colorPalette[Math.floor(Math.random() * this.colorPalette.length)];
         
 		this.gravityDir = getCurrentGravityDir();
@@ -17,6 +17,7 @@ class Pixel
 		this.prevPos =  new vector2D(0,0);
 		this.weight = RandInt(1, 2);
 		this.maxHorizontalDistance = RandInt(2, 8);
+		this.rangeReaction = 0;
 
 		// Vérifie si l'indice this.pos.x existe dans WorldPixelNext
 		if (!WorldPixelNext[this.pos.x]) {
@@ -115,13 +116,43 @@ class Pixel
 		this.setPos(this.prevPos);
 	}
 
-	
+	nearbyReaction()
+	{
+
+	}
+
+	getNearbyPixels(range)
+	{
+		var NearbyPixels = [];
+		for(var x = this.pos.x - range; x < this.pos.x + range; x++)
+		{
+			for(var y = this.pos.y - range; y < this.pos.y + range; y++)
+			{
+				var PixelPos = new vector2D(x,y);
+				if(IsValidPos(PixelPos))
+				{
+					if(WorldPixel[x][y])
+						NearbyPixels.push(WorldPixel[x][y]);
+					else if(WorldPixelNext[x][y])
+						NearbyPixels.push(WorldPixelNext[x][y]);
+				}
+			}
+		}
+		return NearbyPixels;
+	}
 
 	update() {
+		this.nearbyReaction();
 		this.newPos();
         //this.ctx.fillStyle = this.colorstyle;
         PixelArea.context.fillStyle = this.colorstyle;
         PixelArea.context.fillRect(this.pos.x*CellSize, this.pos.y*CellSize, this.width, this.height);
         //this.ctx.fillRect(this.x*CellSize, this.y*CellSize, this.width, this.height);
     }
+
+	destroy()
+	{
+		WorldPixelNext[this.pos.x][this.pos.y] = null; // Supprimez la référence dans WorldPixelNext
+		WorldPixel[this.pos.x][this.pos.y] = null; // Supprimez la référence dans WorldPixelNext
+	}
 }

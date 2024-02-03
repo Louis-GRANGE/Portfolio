@@ -7,7 +7,7 @@ document.addEventListener('click', function(event) {
 	const mouseX = event.clientX;
 	const mouseY = event.clientY;
 
-	addPixelsInCircle(PixelTypeToSpawn, new vector2D(Math.floor(mouseX/CellSize), Math.floor(mouseY/CellSize)), 10);
+	addPixelsInCircle(PixelTypeToSpawn, new vector2D(Math.floor(mouseX/CellSize), Math.floor(mouseY/CellSize)), RangePixelToSpawn);
 });
 
 // Ajoutez un gestionnaire d'événements pour le clic droit
@@ -24,7 +24,7 @@ document.addEventListener('mousemove', function(event) {
 document.addEventListener('mousedown', function(event) {
 	// Vérifiez si le bouton enfoncé est le bouton droit de la souris
 	if (event.button === 0) {
-        //isLeftButtonDown = true;
+        isLeftButtonDown = true;
     } else if (event.button === 2) {
     	isRightButtonDown = true;
     }

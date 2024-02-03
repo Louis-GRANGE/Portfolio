@@ -1,7 +1,9 @@
 var ColorPalette = ["#35b88f", "#152E33", "#23233a", "#9099cd", "#4d529a", "#dddddd"]
 var PixelColor = "#23233a";
-var AllPixelTypeCanSpawn = [Sand, Rock, Water, Wood];
+var AllPixelTypeCanSpawn = [Sand, Rock, Water, Wood, Fire];
 var PixelTypeToSpawn = Pixel;
+var RangePixelToSpawn = 2;
+var FrameRate = 10;
 
 const GravityDirection = {
     UP: 'UP',
@@ -33,7 +35,7 @@ function IsValidPos(v)
 	return validatedPos.x == v.x && validatedPos.y == v.y;
 }
 
-var CellSize = 3; //3
+var CellSize = 3; //3 Si la valeur est un float (ex: 0.5) il y a une grille qui apparait
 var WorldPixelNext = new Array(Math.floor(window.innerWidth/CellSize));
 for (var x = 0; x < WorldPixelNext.length; x++) {
 	WorldPixelNext[x] = new Array(Math.floor(window.innerHeight / CellSize));
@@ -52,9 +54,9 @@ var PixelArea = {
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
-        this.interval = setInterval(updatePixelArea, 10);
+        this.interval = setInterval(updatePixelArea, FrameRate);
         this.intervalColor = setInterval(updatePixelColor, 1000);
-        this.intervalPixelType = setInterval(updatePixelTypeToSpawn, 1000);
+        //this.intervalPixelType = setInterval(updatePixelTypeToSpawn, 1000);
 
         },
     clear : function() {
@@ -82,11 +84,11 @@ function updatePixelArea() {
     PixelArea.clear();
     if(isRightButtonDown)
 	{
-		removePixelsInCircle(new vector2D(Math.floor(mousePos.x/CellSize), Math.floor(mousePos.y/CellSize)), 2);
+		removePixelsInCircle(new vector2D(Math.floor(mousePos.x/CellSize), Math.floor(mousePos.y/CellSize)), RangePixelToSpawn);
 	}
 	if(isLeftButtonDown)
 	{
-		addPixelsInCircle(new vector2D(Math.floor(mousePos.x/CellSize), Math.floor(mousePos.y/CellSize)), 2);
+		addPixelsInCircle(PixelTypeToSpawn, new vector2D(Math.floor(mousePos.x/CellSize), Math.floor(mousePos.y/CellSize)), RangePixelToSpawn);
 	}
 
 	WorldPixel = WorldPixelNext;
@@ -97,9 +99,9 @@ function updatePixelArea() {
     UpdatePixelAreaByCurrentGravity();
 	
 	var NbPixels = GetNbPixels();
-	console.log(NbPixels);
+	//console.log(NbPixels);
 	if(NbPixels > BiggestNbPixel) BiggestNbPixel = NbPixels;
-	console.log("Max Pixels: " + BiggestNbPixel /*+ "Max x:" + WorldPixel.length + " y:" + WorldPixel[0].length*/);
+	//console.log("Max Pixels: " + BiggestNbPixel /*+ "Max x:" + WorldPixel.length + " y:" + WorldPixel[0].length*/);
 }
 
 function updatePixelColor()
@@ -246,6 +248,19 @@ function removePixelsInCircle(pos, range)
 			}
 		}
 	}
+}
+
+function changePixelType(type) {
+    // Implémentez la logique pour changer le type de pixel ici
+    console.log("Changer le type de pixel à:", type);
+	PixelTypeToSpawn = type;
+}
+
+function changeRadius(value) {
+    // Implémentez la logique pour changer la taille du rayon de spawn ici
+    console.log("Changer la taille du rayon à:", value);
+	document.getElementById('radiusValue').textContent = value;
+	RangePixelToSpawn = Math.floor(value);
 }
 
 startPixelWorld();

@@ -5,7 +5,14 @@ class Water extends Pixel {
         this.colorstyle = this.colorPalette[Math.floor(Math.random() * this.colorPalette.length)];
         
         this.maxHorizontalDistance = 100;
+        this.intervalColor = setInterval(this.UpdateColor.bind(this), 100); // Utilisez bind pour lier le contexte
+
         // ... le reste du code spécifique à Water
+    }
+
+    UpdateColor()
+    {
+        this.colorstyle = this.colorPalette[Math.floor(Math.random() * this.colorPalette.length)];
     }
 
     // Vous pouvez également ajouter des fonctions spécifiques à Water

@@ -21,12 +21,25 @@
 
 
 	<head>
+		<link rel="stylesheet" href="assets/css/menu.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<style>
 			canvas {
 				position: fixed;
 			}
 		</style>
+		<div class="menu">
+			<button onclick="changePixelType(Sand)">Sand</button>
+			<button onclick="changePixelType(Rock)">Rock</button>
+			<button onclick="changePixelType(Water)">Water</button>
+			<button onclick="changePixelType(Wood)">Wood</button>
+			<button onclick="changePixelType(Fire)">Fire</button>
+			<button onclick="changePixelType(Pixel)">Pixel</button>
+			<!-- Ajoutez d'autres boutons pour les types de pixels supplémentaires -->
+			
+			<label for="radiusSlider">Radius: <span id="radiusValue">10</span></label>
+        	<input type="range" id="radiusSlider" min="1" max="20" value="2" onchange="changeRadius(this.value)">
+		</div>
 	</head>
 	<!--<body onload="startGame()" onmousemove="MovePiece(event)" onmousedown="SetPieceToMove(event)">-->
 	<!--<body onload="startPixelWorld()">
@@ -520,6 +533,7 @@
 			<script src="assets/js/Pixel/PixelsType/Sand.js"></script>
 			<script src="assets/js/Pixel/PixelsType/Rock.js"></script>
 			<script src="assets/js/Pixel/PixelsType/Water.js"></script>
+			<script src="assets/js/Pixel/PixelsType/Fire.js"></script>
 			<script src="assets/js/Pixel/PixelsType/Wood.js"></script>
 			<script src="assets/js/Pixel/WorldPixel.js"></script>
 			<script src="assets/js/Pixel/main.js"></script>
