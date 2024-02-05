@@ -22,4 +22,15 @@ class vector2D
 		return distance;
 	}
 	equal(v) { return (this.x == v.x && this.y == v.y); }
+	clone() { return new vector2D(this.x, this.y); }
+	normalize() {
+		const length = this.len();
+		if (length !== 0) {
+			return new vector2D(this.x / length, this.y / length);
+		} else {
+			// Handle division by zero or near-zero length
+			//console.error("Cannot normalize a vector with zero length.");
+			return new vector2D(0, 0);
+		}
+	}
 }

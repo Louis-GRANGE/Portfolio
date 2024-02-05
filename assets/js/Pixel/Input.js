@@ -7,7 +7,20 @@ document.addEventListener('click', function(event) {
 	const mouseX = event.clientX;
 	const mouseY = event.clientY;
 
-	addPixelsInCircle(PixelTypeToSpawn, new vector2D(Math.floor(mouseX/CellSize), Math.floor(mouseY/CellSize)), RangePixelToSpawn);
+    if(ImagePreview)
+    {
+        drawPixelImage(ImagePreviewData, mousePos);
+        ImagePreviewData = null;
+        ImagePreview = null;
+        // Prévisualisation dans la zone de dépôt
+       const dropZone = document.getElementById('drop-zone');
+       dropZone.innerHTML = ''; // Supprime le contenu précédent
+    }
+    else
+    {
+        addPixelsInCircle(PixelTypeToSpawn, new vector2D(Math.floor(mouseX/CellSize), Math.floor(mouseY/CellSize)), RangePixelToSpawn);
+    }
+
 });
 
 // Ajoutez un gestionnaire d'événements pour le clic droit

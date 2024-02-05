@@ -1,14 +1,15 @@
-class Fire extends Pixel {
+class Explosion extends Pixel {
     constructor(pos) {
         super(pos);
         this.colorPalette = ['#FF0000', '#FF4500', '#FF6347', '#FF7F50']; // Palette de couleurs pour la classe Feu
         this.colorstyle = this.colorPalette[Math.floor(Math.random() * this.colorPalette.length)];
         this.color = { r: 255, g: 0, b: 0 }; // Initialisez la couleur à rouge
 
+        this.maxGravitySpeed = 1;
         this.maxHorizontalDistance = 2;
         this.MaxLifetime = RandInt(100, 200);
         this.lifetime = 0;
-        this.rangeReaction = 3;
+        this.rangeReaction = 5;
         // ... le reste du code spécifique à Feu
     }
 
@@ -17,7 +18,7 @@ class Fire extends Pixel {
             RandInt(-3, 3),
             RandInt(-1, 1)
         );
-        var newPosGrav = this.pos.add(this.forceDir.mul(this.forceStrength * -this.weight)).add(randomOffset);
+        var newPosGrav = this.pos.add(this.gravityDir.mul(this.gravitySpeed * -this.weight)).add(randomOffset);
     
         if (IsValidPos(newPosGrav)) {
             var UnderPixel = WorldPixel[newPosGrav.x][newPosGrav.y];
@@ -25,19 +26,19 @@ class Fire extends Pixel {
     
             if (UnderPixelNext == null && UnderPixel == null) {
                 // Comportement du feu
-                if (this.forceStrength < this.maxGravitySpeed) {
-                    this.forceStrength += 1;
+                if (this.gravitySpeed < this.maxGravitySpeed) {
+                    this.gravitySpeed += 1;
                 }
                 this.setPos(newPosGrav);
                 this.CostMovement = 1;
             } else if (UnderPixelNext) {
-                this.forceStrength = 1;
+                this.gravitySpeed = 1;
                 this.CostMovement = 1;
     
                 var possiblePositions = [];
     
                 for (var i = -this.maxHorizontalDistance; i <= this.maxHorizontalDistance; i++) {
-                    var potentialPos = newPosGrav.add(this.forceDir.right().mul(i));
+                    var potentialPos = newPosGrav.add(this.gravityDir.right().mul(i));
                     if (
                         IsValidPos(potentialPos) &&
                         WorldPixel[potentialPos.x][potentialPos.y] == null &&
@@ -62,12 +63,12 @@ class Fire extends Pixel {
                     }
                 }
             } else {
-                this.forceStrength = 0;
+                this.gravitySpeed = 0;
                 this.CostMovement = 0;
                 this.setPos(this.pos);
             }
         } else {
-            this.forceStrength = 0;
+            this.gravitySpeed = 0;
             this.CostMovement = 0;
             this.setPos(this.pos);
         }
@@ -81,9 +82,10 @@ class Fire extends Pixel {
         var NearbyPixels = this.getNearbyPixels(this.rangeReaction);
         for(var i = 0; i < NearbyPixels.length; i++)
         {
-            if(NearbyPixels[i] instanceof Wood)
+            if(NearbyPixels[i].usePhysics)
             {
-                var NewFire = new Fire(NearbyPixels[i].pos);
+                NearbyPixels[i].externalForceDir = NearbyPixels[i].pos.sub(this.pos).normalize();
+                NearbyPixels[i].externalForceStrength = NearbyPixels[i].pos.dist(this.pos);
                 WorldPixel[NearbyPixels[i].pos.x][NearbyPixels[i].pos.y] = null;
             }
         }

@@ -15,5 +15,11 @@ class Water extends Pixel {
         this.colorstyle = this.colorPalette[Math.floor(Math.random() * this.colorPalette.length)];
     }
 
+    destroy()
+    {
+        clearInterval(this.intervalColor);
+        super.destroy();
+    }
+
     // Vous pouvez également ajouter des fonctions spécifiques à Water
 }

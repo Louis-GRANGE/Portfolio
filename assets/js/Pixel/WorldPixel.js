@@ -5,6 +5,11 @@ var PixelTypeToSpawn = Pixel;
 var RangePixelToSpawn = 2;
 var FrameRate = 10;
 
+//ImageUpload
+var ImagePreview;
+var ImagePreviewData;
+var usePhysicsOnUploadImg = false;
+
 const GravityDirection = {
     UP: 'UP',
     DOWN: 'DOWN',
@@ -82,13 +87,17 @@ function GetNbPixels()
 var BiggestNbPixel = 0;
 function updatePixelArea() {
     PixelArea.clear();
+
     if(isRightButtonDown)
 	{
 		removePixelsInCircle(new vector2D(Math.floor(mousePos.x/CellSize), Math.floor(mousePos.y/CellSize)), RangePixelToSpawn);
 	}
 	if(isLeftButtonDown)
-	{
-		addPixelsInCircle(PixelTypeToSpawn, new vector2D(Math.floor(mousePos.x/CellSize), Math.floor(mousePos.y/CellSize)), RangePixelToSpawn);
+	{ 
+		if(!ImagePreview)
+		{
+			addPixelsInCircle(PixelTypeToSpawn, new vector2D(Math.floor(mousePos.x/CellSize), Math.floor(mousePos.y/CellSize)), RangePixelToSpawn);
+		}
 	}
 
 	WorldPixel = WorldPixelNext;
@@ -97,11 +106,20 @@ function updatePixelArea() {
 	resetPixelWorld();
 
     UpdatePixelAreaByCurrentGravity();
+
 	
+	if(mousePos)
+		drawOutline(mousePos.x, mousePos.y, RangePixelToSpawn); // Draw Range
+
+	if(ImagePreview)
+		PixelArea.canvas.getContext('2d').drawImage(ImagePreview, mousePos.x - ImagePreview.width/2, mousePos.y - ImagePreview.height/2, ImagePreview.width, ImagePreview.height);
+
+	
+	/*
 	var NbPixels = GetNbPixels();
-	//console.log(NbPixels);
+	console.log(NbPixels);
 	if(NbPixels > BiggestNbPixel) BiggestNbPixel = NbPixels;
-	//console.log("Max Pixels: " + BiggestNbPixel /*+ "Max x:" + WorldPixel.length + " y:" + WorldPixel[0].length*/);
+	console.log("Max Pixels: " + BiggestNbPixel);*/
 }
 
 function updatePixelColor()
@@ -204,8 +222,12 @@ function resetPixelWorld()
 
 function addPixel(PixelClass, v)
 {
+	var NewPixel;
 	if(IsValidPos(v) && !WorldPixel[v.x][v.y])
-		var NewPixel = new PixelClass(v);
+	{
+		NewPixel = new PixelClass(v);
+	}
+	return NewPixel;
 }
 function addPixelAtCenter(PixelClass)
 {
@@ -261,6 +283,28 @@ function changeRadius(value) {
     console.log("Changer la taille du rayon à:", value);
 	document.getElementById('radiusValue').textContent = value;
 	RangePixelToSpawn = Math.floor(value);
+}
+
+// Fonction pour dessiner le contour
+function drawOutline(centerX, centerY, range) {
+
+	var mouseX = centerX - PixelArea.canvas.getBoundingClientRect().left;
+	var mouseY = centerY - PixelArea.canvas.getBoundingClientRect().top;
+
+	// Convertissez les coordonnées de la souris en indices de grille
+	var gridCenterX = Math.floor(mouseX / CellSize);
+	var gridCenterY = Math.floor(mouseY / CellSize);
+
+    // Effacez le canevas (ou effacez simplement la zone du contour)
+	var ctx = PixelArea.canvas.getContext("2d")
+
+    // Dessinez le contour en utilisant une couleur différente (par exemple, rouge)
+    ctx.strokeStyle = '#FF0000';
+    ctx.lineWidth = 2;
+
+    ctx.beginPath();
+    ctx.arc((gridCenterX + 0.5) * CellSize, (gridCenterY + 0.5) * CellSize, range * CellSize, 0, 2 * Math.PI);
+    ctx.stroke();
 }
 
 startPixelWorld();

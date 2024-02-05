@@ -8,14 +8,16 @@ class Pixel
 		this.colorPalette = ColorPalette;//['#FF0000', '#00FF00', '#0000FF', '#FFFF00']; // Ajoutez d'autres couleurs selon vos besoins
         this.colorstyle = this.colorPalette[Math.floor(Math.random() * this.colorPalette.length)];
         
-		this.gravityDir = getCurrentGravityDir();
-		this.gravitySpeed = 1;
-		this.maxGravitySpeed = 5;
+		this.forceDir =  getCurrentGravityDir();
+		this.forceStrength = 1;
+		this.weight = RandInt(1, 3);
+
+		this.usePhysics = true;
+
 		this.speedX = 0;
 		this.speedY = 0;
 		this.CostMovement = 0;
 		this.prevPos =  new vector2D(0,0);
-		this.weight = RandInt(1, 2);
 		this.maxHorizontalDistance = RandInt(2, 8);
 		this.rangeReaction = 0;
 
@@ -27,7 +29,20 @@ class Pixel
 	}
 
 	newPos() {
-		var newPosGrav = this.pos.add(this.gravityDir.mul(this.gravitySpeed * this.weight));
+		if(!this.usePhysics)
+		{
+			this.setPos(this.pos);
+			return;
+		}
+
+		var updateNb = Math.floor(this.forceStrength * this.weight);
+
+		/*for(var i = 0; i < updateNb; i++)
+		{
+
+		}*/
+
+		var newPosGrav = this.pos.add(this.forceDir.mul(updateNb)); //this.calculateTargetPosition();
 
 		if (IsValidPos(newPosGrav))
 		{
@@ -36,20 +51,20 @@ class Pixel
 	
 			if (UnderPixelNext == null || !(this instanceof Water) && UnderPixel instanceof Water) // A REVOIR
 			{
-				if (this.gravitySpeed < this.maxGravitySpeed)
-					this.gravitySpeed += 1;
+				//if (this.forceStrength < this.maxGravitySpeed)
+				//	this.forceStrength += 1;
 				this.setPos(newPosGrav);
 				this.CostMovement = 1;
 			}
 			else if (UnderPixelNext)
 			{
-				this.gravitySpeed = 1;
+				this.forceStrength = 1;
 				this.CostMovement = 1;
 
 				var possiblePositions = [];
 	
 				for (var i = -this.maxHorizontalDistance; i <= this.maxHorizontalDistance; i++) {
-					var potentialPos = newPosGrav.add(this.gravityDir.right().mul(i));
+					var potentialPos = newPosGrav.add(this.forceDir.right().mul(i));
 					if (
 						IsValidPos(potentialPos) &&
 						WorldPixel[potentialPos.x][potentialPos.y] == null &&
@@ -76,14 +91,14 @@ class Pixel
 			}
 			else
 			{
-				this.gravitySpeed = 0;
+				this.forceStrength = 0;
 				this.CostMovement = 0;
 				this.setPos(this.pos);
 			}
 		}
 		else
 		{
-			this.gravitySpeed = 0;
+			this.forceStrength = 0;
 			this.CostMovement = 0;
 			this.setPos(this.pos);
 		}
@@ -116,6 +131,59 @@ class Pixel
 		this.setPos(this.prevPos);
 	}
 
+	resetExternalForce() {
+		this.externalforceDir = new vector2D(0, 0);
+		this.externalforceStrength = 0;
+	}
+
+	calculateTargetPosition() {
+		var TargetPosition = this.pos.add(this.forceDir.mul(Math.floor(this.forceStrength * this.weight)));
+		var HaveFoundFreePlace = false;
+
+	
+		// Vérifier s'il y a des obstacles entre la position actuelle et la position cible
+		while (IsValidPos(TargetPosition) && WorldPixel[TargetPosition.x][TargetPosition.y]) {
+			var offsetPositions = [
+				this.forceDir.right(),
+				this.forceDir.left(),
+				this.forceDir,
+				this.forceDir.inv()
+			];
+	
+			for (var offset of offsetPositions) {
+				var potentialPos = TargetPosition.add(offset);
+				if (
+					IsValidPos(potentialPos) &&
+					!WorldPixel[potentialPos.x][potentialPos.y] &&
+					!WorldPixelNext[potentialPos.x][potentialPos.y]
+				) {
+					TargetPosition = potentialPos;
+					HaveFoundFreePlace = true;
+					break;
+				}
+			}
+	
+			if (HaveFoundFreePlace) {
+				break;
+			}
+	
+			TargetPosition = TargetPosition.add(this.forceDir);
+		}
+	
+		// Ajouter la gravité au départ
+		TargetPosition = TargetPosition.add(this.forceDir);
+	
+		if (HaveFoundFreePlace) {
+			return TargetPosition;
+		}
+	
+		return this.pos.add(this.forceDir.mul(Math.floor(this.forceStrength * this.weight)));
+	}
+
+	applyExternalForce(force) {
+        this.force = this.force.add(force);
+    }
+
 	nearbyReaction()
 	{
 
@@ -142,6 +210,7 @@ class Pixel
 	}
 
 	update() {
+		this.resetExternalForce();
 		this.nearbyReaction();
 		this.newPos();
         //this.ctx.fillStyle = this.colorstyle;
