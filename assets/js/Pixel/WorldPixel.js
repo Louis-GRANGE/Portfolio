@@ -2,7 +2,7 @@ var ColorPalette = ["#35b88f", "#152E33", "#23233a", "#9099cd", "#4d529a", "#ddd
 var PixelColor = "#23233a";
 var AllPixelTypeCanSpawn = [Sand, Rock, Water, Wood, Fire];
 var PixelTypeToSpawn = Pixel;
-var RangePixelToSpawn = 2;
+var RangePixelToSpawn = 10;
 var FrameRate = 10;
 
 //ImageUpload
@@ -17,7 +17,7 @@ const GravityDirection = {
     RIGHT: 'RIGHT'
 };
 
-let currentGravity = GravityDirection.UP;
+let currentGravity = GravityDirection.DOWN;
 
 function getRandomColor() {
 	const randomColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
@@ -204,8 +204,6 @@ function getCurrentGravityDir()
 }
 
 function startPixelWorld() {
-    //myGamePiece = new component(30, 30, "red", 10, 120);
-    //myGamePiece.gravity = 0.05;
     console.log("StartPixel");
     addPixelAtCenter(Sand);
     PixelArea.start();
@@ -283,7 +281,9 @@ function changeRadius(value) {
     console.log("Changer la taille du rayon à:", value);
 	document.getElementById('radiusValue').textContent = value;
 	RangePixelToSpawn = Math.floor(value);
+	document.getElementById("radiusSlider").value = RangePixelToSpawn;
 }
+changeRadius(RangePixelToSpawn);
 
 // Fonction pour dessiner le contour
 function drawOutline(centerX, centerY, range) {
@@ -307,4 +307,35 @@ function drawOutline(centerX, centerY, range) {
     ctx.stroke();
 }
 
+var iteration = 0;
+function StartAnim()
+{
+	if(iteration > WorldPixel.length)
+	{
+		clearInterval(StartAnimInterval);
+		FireLoadingInterval = setInterval(FireLoadingAnim, 0);
+	}
+	else
+	{
+		iteration += 1;
+		addPixelsInCircle(Pixel, new vector2D(iteration, 100 + RandInt(0, 50)), RandInt(1,2));
+	}
+	
+}
+
+
+
+function FireLoadingAnim()
+{
+	var sizeCircle = Math.min(WorldPixel.length/3, WorldPixel[0].length/3);
+	var ElipsePoints = getEllipseContour(new vector2D(WorldPixel.length/2, WorldPixel[0].length/2), sizeCircle, sizeCircle);
+
+	var point = ElipsePoints[iteration%ElipsePoints.length]
+	addPixelsInCircle(Fire, point, 5);
+	iteration += 3;
+}
+
 startPixelWorld();
+
+var StartAnimInterval = setInterval(StartAnim, 0);
+var FireLoadingInterval;

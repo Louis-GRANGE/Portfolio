@@ -1,12 +1,6 @@
 var dropZone = document.getElementById('drop-zone');
 var canvas = PixelArea.canvas;
 
-function toggleMenu() {
-  console.log("Active menu");
-  var menu = document.querySelector('.menu');
-  menu.classList.toggle('active');
-}
-
 // Éviter le comportement par défaut du glisser-déposer
 ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
   dropZone.addEventListener(eventName, preventDefaults, false);
@@ -21,6 +15,7 @@ function preventDefaults(e) {
 // Gérer le glisser-déposer
 ['dragenter', 'dragover'].forEach(eventName => {
   dropZone.addEventListener(eventName, highlight, false);
+  console.log("drag");
 });
 
 ['dragleave', 'drop'].forEach(eventName => {

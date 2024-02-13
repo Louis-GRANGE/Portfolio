@@ -4,9 +4,10 @@ var mousePos = new vector2D(0,0);
 
 document.addEventListener('click', function(event) {
 	// Obtenez les coordonnées du clic par rapport au coin supérieur gauche du canvas
-	const mouseX = event.clientX;
-	const mouseY = event.clientY;
-
+	//const mouseX = event.clientX;
+	//const mouseY = event.clientY;
+    if(FireLoadingInterval)
+        clearInterval(FireLoadingInterval);
     if(ImagePreview)
     {
         drawPixelImage(ImagePreviewData, mousePos);
@@ -16,11 +17,6 @@ document.addEventListener('click', function(event) {
        const dropZone = document.getElementById('drop-zone');
        dropZone.innerHTML = ''; // Supprime le contenu précédent
     }
-    else
-    {
-        addPixelsInCircle(PixelTypeToSpawn, new vector2D(Math.floor(mouseX/CellSize), Math.floor(mouseY/CellSize)), RangePixelToSpawn);
-    }
-
 });
 
 // Ajoutez un gestionnaire d'événements pour le clic droit
@@ -35,13 +31,16 @@ document.addEventListener('mousemove', function(event) {
 });
 
 document.addEventListener('mousedown', function(event) {
+    const menu = document.querySelector('.menu');
+    if(menu.classList.contains('active')) return; // Si le menu est actif on ne pose pas de pixel.
+
 	// Vérifiez si le bouton enfoncé est le bouton droit de la souris
 	if (event.button === 0) {
         isLeftButtonDown = true;
     } else if (event.button === 2) {
     	isRightButtonDown = true;
     }
-  });
+});
 
   // Ajoutez un gestionnaire d'événements pour le relâchement du clic droit
 document.addEventListener('mouseup', function(event) {

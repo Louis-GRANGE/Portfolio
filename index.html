@@ -30,9 +30,9 @@
 			}
 		</style>
 
-		<div class="burger-menu">
-			<button id="burger-icon" onclick="toggleMenu()">&#9776;</button>
-			<div class="menu">
+		<div id="burger-icon">☰</div>
+		<div class="menu">
+			<ul class="menu-items">
 				<button onclick="changePixelType(Sand)">Sand</button>
 				<button onclick="changePixelType(Rock)">Rock</button>
 				<button onclick="changePixelType(Water)">Water</button>
@@ -47,9 +47,9 @@
 				<label for="usePhysicsCheckbox" id="usePhysicsLabel">
 					<input type="checkbox" id="usePhysicsCheckbox" onchange="togglePhysics()"> Use Physics
 				</label>
-				
+					
 				<div id="drop-zone"> Drop an image here </div><!--Drop an image here</div>-->
-			</div>
+			</ul>
 		</div>
 	</head>
 	<!--<body onload="startGame()" onmousemove="MovePiece(event)" onmousedown="SetPieceToMove(event)">-->
@@ -551,6 +551,6 @@
 			<script src="assets/js/Pixel/DropImage.js"></script>
 			<script src="assets/js/Pixel/main.js"></script>
 			<script src="assets/js/Pixel/Input.js"></script>
-
+			<script src="assets/js/Pixel/Menu.js"></script>
 	</body>
 </html>

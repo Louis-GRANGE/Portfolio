@@ -1,4 +1,4 @@
-.menu {
+/*.menu {
     position: fixed;
     top: 0;
     left: 0;
@@ -7,8 +7,62 @@
     padding: 10px;
     color: white;
     z-index: 50;
+}*/
+
+
+/************************** MENU ****************************/
+.menu {
+    position: fixed;
+    top: 0;
+    left: -200px; /* menu caché par défaut */
+    width: 200px;
+    height: 100%;
+    background-color: #333;
+    transition: left 0.3s ease;
+    z-index: 50;
+    padding: 10px;
 }
 
+.menu.active {
+    left: 0; /* afficher le menu */
+}
+
+#burger-icon {
+    cursor: pointer;
+    color: white;
+    font-size: 24px;
+    width: 1em; /* Taille de la police */
+    height: 1em; /* Taille de la police */
+    line-height: 1em; /* Aligner le texte verticalement */
+    font-size: 1em; /* Taille de la police */
+    text-align: center;
+    /*transition: transform 0.3s ease;*/
+}
+
+.menu-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.menu-items li {
+    margin-bottom: 10px;
+}
+
+.menu-items li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.menu-items li a:hover {
+    background-color: #555;
+}
+
+/********************* In The Menu **********************/
 .menu button {
     display: block;
     width: 100%;
