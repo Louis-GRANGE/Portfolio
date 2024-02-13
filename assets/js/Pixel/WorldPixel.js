@@ -324,6 +324,8 @@ function StartAnim()
 }
 
 
+//var sizeCircle = Math.min(WorldPixel.length/3, WorldPixel[0].length/3);
+//var ElipsePoints = generateChaoticLine(new vector2D(WorldPixel.length/2, WorldPixel[0].length/2), 1000, 10);
 
 function FireLoadingAnim()
 {

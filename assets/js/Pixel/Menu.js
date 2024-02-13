@@ -13,8 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     menu.addEventListener('mouseleave', function () {
-        if(!DraggingImage)
-            menu.classList.remove('active');
+        menu.classList.remove('active');
     });
 });
 

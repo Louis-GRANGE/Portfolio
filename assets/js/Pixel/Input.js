@@ -6,8 +6,10 @@ document.addEventListener('click', function(event) {
 	// Obtenez les coordonnées du clic par rapport au coin supérieur gauche du canvas
 	//const mouseX = event.clientX;
 	//const mouseY = event.clientY;
-    if(FireLoadingInterval)
+
+    if(FireLoadingInterval) // Stop fire circle animation when click
         clearInterval(FireLoadingInterval);
+        
     if(ImagePreview)
     {
         drawPixelImage(ImagePreviewData, mousePos);
