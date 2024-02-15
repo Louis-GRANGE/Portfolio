@@ -15,7 +15,6 @@ function preventDefaults(e) {
 // Gérer le glisser-déposer
 ['dragenter', 'dragover'].forEach(eventName => {
   dropZone.addEventListener(eventName, highlight, false);
-  console.log("drag");
 });
 
 ['dragleave', 'drop'].forEach(eventName => {

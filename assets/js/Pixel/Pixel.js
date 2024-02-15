@@ -20,6 +20,7 @@ class Pixel
 		this.prevPos =  new vector2D(0,0);
 		this.maxHorizontalDistance = RandInt(2, 8);
 		this.rangeReaction = 0;
+		this.isAlive = true;
 
 		// Vérifie si l'indice this.pos.x existe dans WorldPixelNext
 		if (!WorldPixelNext[this.pos.x]) {
@@ -221,7 +222,9 @@ class Pixel
 
 	destroy()
 	{
+		this.isAlive = false;
+
 		WorldPixelNext[this.pos.x][this.pos.y] = null; // Supprimez la référence dans WorldPixelNext
-		WorldPixel[this.pos.x][this.pos.y] = null; // Supprimez la référence dans WorldPixelNext
+		WorldPixel[this.pos.x][this.pos.y] = null; // Supprimez la référence dans WorldPixel
 	}
 }

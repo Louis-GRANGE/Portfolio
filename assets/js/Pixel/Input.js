@@ -67,7 +67,4 @@ document.addEventListener('keydown', function(e) {
     else if (e.key == '+') {
 		addPixelAtCenter();
 	}
-    else if (e.key == 'r') {
-		resetPixelWorld();
-	}
 });

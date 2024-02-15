@@ -80,6 +80,13 @@
     background-color: #777;
 }
 
+.menu button.red {
+    background-color: #880000;
+}
+
+.menu button.red:hover {
+    background-color: #550000;
+}
 /* Ajoutez ces styles pour le slider */
 .menu label {
     display: block;

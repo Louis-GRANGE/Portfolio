@@ -81,10 +81,12 @@ class Fire extends Pixel {
         var NearbyPixels = this.getNearbyPixels(this.rangeReaction);
         for(var i = 0; i < NearbyPixels.length; i++)
         {
-            if(NearbyPixels[i] instanceof Wood)
+            if(NearbyPixels[i] instanceof Wood || NearbyPixels[i] instanceof CharacterPixel)
             {
-                var NewFire = new Fire(NearbyPixels[i].pos);
-                WorldPixel[NearbyPixels[i].pos.x][NearbyPixels[i].pos.y] = null;
+                var NearbyPos = NearbyPixels[i].pos;
+                NearbyPixels[i].destroy();
+                var NewFire = new Fire(NearbyPos);
+                WorldPixel[NearbyPos.x][NearbyPos.y] = null;
             }
         }
 	}

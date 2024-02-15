@@ -4,6 +4,7 @@ var AllPixelTypeCanSpawn = [Sand, Rock, Water, Wood, Fire];
 var PixelTypeToSpawn = Pixel;
 var RangePixelToSpawn = 10;
 var FrameRate = 10;
+var CellSize = 4; //3 Si la valeur est un float (ex: 0.5) il y a une grille qui apparait
 
 //ImageUpload
 var ImagePreview;
@@ -40,7 +41,6 @@ function IsValidPos(v)
 	return validatedPos.x == v.x && validatedPos.y == v.y;
 }
 
-var CellSize = 3; //3 Si la valeur est un float (ex: 0.5) il y a une grille qui apparait
 var WorldPixelNext = new Array(Math.floor(window.innerWidth/CellSize));
 for (var x = 0; x < WorldPixelNext.length; x++) {
 	WorldPixelNext[x] = new Array(Math.floor(window.innerHeight / CellSize));
@@ -103,7 +103,10 @@ function updatePixelArea() {
 	WorldPixel = WorldPixelNext;
 	
 	//Reset WorldPixelNext
-	resetPixelWorld();
+	WorldPixelNext = new Array(Math.floor(window.innerWidth/CellSize));
+	for (var x = 0; x < WorldPixelNext.length; x++) {
+		WorldPixelNext[x] = new Array(Math.floor(window.innerHeight / CellSize));
+	}
 
     UpdatePixelAreaByCurrentGravity();
 
@@ -211,10 +214,13 @@ function startPixelWorld() {
 
 function resetPixelWorld()
 {
-	//Reset WorldPixelNext
-	WorldPixelNext = new Array(Math.floor(window.innerWidth/CellSize));
-	for (var x = 0; x < WorldPixelNext.length; x++) {
-		WorldPixelNext[x] = new Array(Math.floor(window.innerHeight / CellSize));
+	for (var x = 0; x < WorldPixel.length; x += 1) {
+		for (var y = 0; y <= WorldPixel[x].length - 1; y++) {
+			if(WorldPixel[x][y])
+				WorldPixel[x][y].destroy();
+			if(WorldPixelNext[x][y])
+				WorldPixelNext[x][y].destroy();
+		}
 	}
 }
 
@@ -223,7 +229,8 @@ function addPixel(PixelClass, v)
 	var NewPixel;
 	if(IsValidPos(v) && !WorldPixel[v.x][v.y])
 	{
-		NewPixel = new PixelClass(v);
+		if(PixelClass)
+			NewPixel = new PixelClass(v);
 	}
 	return NewPixel;
 }
@@ -264,7 +271,8 @@ function removePixelsInCircle(pos, range)
 			var RemovePix = new vector2D(i,j);
 			if(RemovePix.dist(pos) < range && IsValidPos(RemovePix))
 			{
-                WorldPixelNext[i][j] = null;
+				if(WorldPixelNext[i][j])
+                	WorldPixelNext[i][j].destroy();// = null;
 			}
 		}
 	}
