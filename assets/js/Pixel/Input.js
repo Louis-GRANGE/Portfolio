@@ -67,4 +67,7 @@ document.addEventListener('keydown', function(e) {
     else if (e.key == '+') {
 		addPixelAtCenter();
 	}
+    if (e.key === ' ') { // Vérifie si la touche pressée est "espace"
+        e.preventDefault(); // Empêche le comportement par défaut de la touche "espace" (défilement de la page)
+    }
 });

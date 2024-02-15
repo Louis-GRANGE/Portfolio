@@ -34,3 +34,23 @@ function generateChaoticLine(startAt, steps, stepSize) {
 
     return points;
 }
+
+function retriggerableDelay(func, delay) {
+    let timerId;
+    let currentDelay = delay; // Variable pour stocker le délai actuel
+
+    function delayFunction(newDelay = currentDelay) {
+        if (timerId) clearTimeout(timerId); // Annule le délai précédent s'il existe
+        timerId = setTimeout(func, newDelay); // Démarre un nouveau délai avec la nouvelle valeur
+        currentDelay = newDelay; // Met à jour le délai actuel
+    }
+
+    // Exécute la fonction de délai au début
+    delayFunction();
+
+    // Ajoute une propriété delay à la fonction pour récupérer le délai actuel
+    delayFunction.delay = () => currentDelay;
+
+    // Renvoie la fonction qui peut être appelée pour réinitialiser le délai
+    return delayFunction;
+}

@@ -56,5 +56,10 @@ document.addEventListener('keydown', function(event) {
     }
     var pixelChar = new Character(character, getPosAtIndex(cursorIndexPos), 1);
     CharacterLine.push(pixelChar);
-
+    activePhysicToTheLastCharacter(1000);
 });
+
+const activePhysicToTheLastCharacter = retriggerableDelay(function() {
+    CharacterLine[CharacterLine.length-1].activePhysics();
+    activePhysicToTheLastCharacter(activePhysicToTheLastCharacter.delay() * 0.95);
+}, 1000);

@@ -21,7 +21,7 @@ class Character
             });
         }
         
-        setTimeout(() => {this.activePhysics(); }, 2000);
+        //setTimeout(() => {this.activePhysics(); }, 2000);
     }
 
     drawCharacterPixels()
