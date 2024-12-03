@@ -4,7 +4,7 @@ var AllPixelTypeCanSpawn = [Sand, Rock, Water, Wood, Fire];
 var PixelTypeToSpawn = Pixel;
 var RangePixelToSpawn = 10;
 var FrameRate = 10;
-var CellSize = 4; //3 Si la valeur est un float (ex: 0.5) il y a une grille qui apparait
+var CellSize = 5; //3 Si la valeur est un float (ex: 0.5) il y a une grille qui apparait
 
 //ImageUpload
 var ImagePreview;
