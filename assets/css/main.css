@@ -2048,21 +2048,7 @@ input, select, textarea {
 					height: 100%;
 					width: auto;
 				}
-				.box.style1.right.Fallen .image img {
-					display: block;
-					position: absolute;
-					top: 25%;
-					left: 50%;
-					z-index: 1;
-					transform: translate(-50%, -50%);
-					-webkit-transform: translate(-50%, -50%); /* Safari and Chrome */
-					-moz-transform: translate(-50%, -50%); /* Firefox */
-					-ms-transform: translate(-50%, -50%); /* IE 9 */
-					-o-transform: translate(-50%, -50%); /* Opera */
-					width: 100%;
-					height: auto;
-				}
-				.box.style1.right.Fallen .image iframe {
+				.box.style1.right.Vertical .image iframe {
 					display: block;
 					position: absolute;
 					top: 50%;
@@ -2072,8 +2058,8 @@ input, select, textarea {
 					-moz-transform: translate(-50%, -50%); /* Firefox */
 					-ms-transform: translate(-50%, -50%); /* IE 9 */
 					-o-transform: translate(-50%, -50%); /* Opera */
-					width: 100%;
-					height: auto;
+					height: 100%;
+					width: auto;
 				}
 			.box.style1.right .inner {
 				margin-left: 50%;

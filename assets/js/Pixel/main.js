@@ -103,16 +103,12 @@
 
 })(jQuery);
 
-
+/*
 HideShowChatBot();
 function HideShowChatBot() {
   var chatdiv = document.getElementById("chatbot");
   var btn = document.getElementById("chatbotbutton");
-  /*if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }*/
+
   if (chatdiv.style.height === "5vh") {
   	btn.firstChild.data = "CLOSE";
 
@@ -126,4 +122,4 @@ function HideShowChatBot() {
     chatdiv.style.width = "10vw";
 	chatdiv.style.height = "5vh";
   }
-}
+}*/
