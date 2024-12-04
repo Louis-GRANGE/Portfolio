@@ -60,6 +60,7 @@ document.addEventListener('keydown', function(event) {
 });
 
 const activePhysicToTheLastCharacter = retriggerableDelay(function() {
-    CharacterLine[CharacterLine.length-1].activePhysics();
+    if(CharacterLine[CharacterLine.length-1])
+        CharacterLine[CharacterLine.length-1].activePhysics();
     activePhysicToTheLastCharacter(activePhysicToTheLastCharacter.delay() * 0.95);
 }, 1000);
