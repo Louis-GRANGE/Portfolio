@@ -70,3 +70,4 @@ function HideMenu()
     DraggingImage = false;
     menu.classList.remove('active');
 }
+

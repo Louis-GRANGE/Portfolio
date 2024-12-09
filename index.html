@@ -12,16 +12,24 @@
         <meta property="og:image:width" content="200">
         <meta property="og:image:height" content="200">
 
-	<!-- Chatbot
-	<div id="chatbot">
-		<div class="chatbotcontaint">
-			<button id="chatbotbutton" onclick="HideShowChatBot()">CLOSE</button>
-			<iframe src="https://powerva.microsoft.com/webchat/bots/de926ae0-9e03-4d22-bdd9-220ccd3ef020" frameborder="0" style="width: 100%; height: 100%;"></iframe>
-		</div>
-	</div>
-	-->
-
 	<head>
+		<title>GRANGE Louis</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/card.css">
+		<link rel="stylesheet" href="assets/css/modal.css">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+		<!-- Chatbot
+		<div id="chatbot">
+			<div class="chatbotcontaint">
+				<button id="chatbotbutton" onclick="HideShowChatBot()">CLOSE</button>
+				<iframe src="https://powerva.microsoft.com/webchat/bots/de926ae0-9e03-4d22-bdd9-220ccd3ef020" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+			</div>
+		</div>
+		-->
+		
 		<link rel="stylesheet" href="assets/css/menu.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<style>
@@ -30,7 +38,7 @@
 				z-index: -1;
 			}
 		</style>
-
+		
 		<div id="burger-icon">☰</div>
 		<div class="menu">
 			<ul class="menu-items">
@@ -39,32 +47,20 @@
 				<button onclick="changePixelType(Water)">Water</button>
 				<button onclick="changePixelType(Wood)">Wood</button>
 				<button onclick="changePixelType(Fire)">Fire</button>
-				<button onclick="changePixelType(Explosion)">Explosion</button>
+				<!--<button onclick="changePixelType(Explosion)">Explosion</button>-->
 				<button onclick="changePixelType(Pixel)">Pixel</button>
 				<button onclick="resetPixelWorld()" class="red">Reset</button>
 				<!-- Ajoutez d'autres boutons pour les types de pixels supplémentaires -->
-				
-				<label for="radiusSlider">Radius: <span id="radiusValue">10</span></label>
+			
+				<label for="radiusSlider">Radius: <span id="radiusValue">5</span></label>
 				<input type="range" id="radiusSlider" min="1" max="20" value="2" onchange="changeRadius(this.value)">
-				<label for="usePhysicsCheckbox" id="usePhysicsLabel">
+				<!--<label for="usePhysicsCheckbox" id="usePhysicsLabel">
 					<input type="checkbox" id="usePhysicsCheckbox" onchange="togglePhysics()"> Use Physics
-				</label>
-					
+				</label>-->
+						
 				<div id="drop-zone"> Drop an image here </div><!--Drop an image here</div>-->
 			</ul>
 		</div>
-	</head>
-	<!--<body onload="startGame()" onmousemove="MovePiece(event)" onmousedown="SetPieceToMove(event)">-->
-	<!--<body onload="startPixelWorld()">
-
-	</body>-->
-
-	<head>
-		<title>GRANGE Louis</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
 
@@ -134,526 +130,199 @@ With a strong foundation in programming and problem-solving, I thrive on turning
 				</div>
 				<a href="#last" class="button style2 scrolly">My Projects</a>
 			</article>
-
-	<!-- PROJECTS -->
-	 	 	<!-- Feature 17 -->
-			<article id="seventeen" class="container box style1 right Horizontal"><!--Files Converter & Text To Speech Plugin-->
-				<div class="image fit"><img src="images/Projects/PluginUE-Files-Converter-Text-To-Speech.png" alt=""/></div>
-				<div class="inner">
-					<header>
-						<h2>Files Converter & Text To Speech Plugin</h2><h3 class="date">2022</h3>
-					</header>
-					<p> This plugin is use to Convert lot of types of file with free API : API2Convert (like MP3 to WAV) & also use to Speech to Text with free API : Voice RSS directly in your project in the WidgetEditor of Unreal Engine.
-					<br> <a class="effect-5" href="https://github.com/Louis-GRANGE/PluginUE-Files-Converter-Text-To-Speech" target="_blank"><i>Here an access to the GitHub page</i></a>
-					<br>
-					<br><u>My Duties:</u> Use external API to make a voice of your project with a simple text. User Interface and save system of your different texts and voices.
-					<br><span class="marge right green">Unreal Engine</span>
-					<br><span class="marge right green">Blueprints/C++</span>
-					<br>
-					</p>
-				</div>
-			</article>
-			<button href="#sixteen" class="button style5 scrolly">Next</button>
-	 		<!-- Feature 16 -->
-			<article id="sixteen" class="container box style1 right Vertical"><!--TuMwaTouSa-->
-				<div class="image fit"><img src="images/thumbs/01.jpg" alt=""/></div>
-				<div class="inner">
-					<header>
-						<h2>TuMwaTouSa</h2><h3 class="date">2022</h3>
-							
-					</header>
-					<p> Rogue-Like Game featuring a dynamic map generator and a robust save system. The objective is simple yet intense: survive as long as possible while defeating waves of enemies. Every playthrough offers a unique experience with procedurally generated maps and increasing challenges, testing both your skills and strategy.
-					<br> <a class="effect-5" href="https://github.com/Louis-GRANGE/RogueLike-M1Prog" target="_blank"><i>Here an access to the GitHub page</i></a>
-					<br>
-					<br><u>My Duties:</u> VFX, Map Generator, Save System, UI/UX, AI, Weapons and objects, Player Controller
-					<br><span class="marge right green">Unity</span>
-					<br><span class="marge right green">C#</span>
-					<br>
-					</p>
-				</div>
-			</article>
-			<button href="#fifteen" class="button style5 scrolly">Next</button>
-			<!-- Feature 15 -->
-			<article id="fifteen" class="container box style1 right Vertical"><!--AutoHotKey-->
-				<div class="image fit"><img src="images/thumbs/02.jpg" alt=""/></div>
-				<div class="inner">
-					<header>
-						<h2>Tool Macro Software</h2><h3 class="date">2022/2023</h3>
-							
-					</header>
-					<p> Build a software tools with AutoHotKey : You can make Macro and have different screen and mouse informations.
-					<br> <a class="effect-5" href="https://github.com/Louis-GRANGE/AutoHotKey-DofusTools" target="_blank"><i>Here an access to the GitHub page</i></a>
-					<br>
-					<br><u>My Duties:</u> Create a software using AutoHotKey. 
-					<br><span class="marge right green">AutoHotKey</span>
-					<br><span class="marge right green">C++</span>
-					<br>
-					</p>
-				</div>
-			</article>
-			<button href="#fourteen" class="button style5 scrolly">Next</button>
-	 	 	<!-- Feature 14 -->
-			   <article id="fourteen" class="container box style1 right Vertical"><!--RD-Qt-->
-				<div class="image fit"><img src="images/thumbs/03.jpg" alt=""/></div>
-				<div class="inner">
-					<header>
-						<h2>3D Game Engine on Qt</h2><h3 class="date">2022/2022</h3>
-							
-					</header>
-					<p> Build a 3D Game Engine on Qt in C++. 
-					<br> <a class="effect-5" href="https://github.com/Louis-GRANGE/RD-Qt" target="_blank"><i>Here an access to the GitHub page</i></a>
-					<br>
-					<br><u>My Duties:</u> Graphics renderer, Implement Physics and make a greate structure to use the Engine.
-					<br><span class="marge right green">Qt</span>
-					<br><span class="marge right green">C++</span>
-					<br>
-					</p>
-				</div>
-			</article>
-			<button href="#thirteen" class="button style5 scrolly">Next</button>
-	 	 	<!-- Feature 13 -->
-			  <article id="thirteen" class="container box style1 right Vertical"><!--Symergy-->
-				<div class="image fit">
-				<iframe src="https://www.youtube.com/embed/I-miemjs3F0?si=-s2pTUPWYfo7kh4e"
-						title="YouTube video player"
-						frameborder="0" 
-						allowfullscreen
-						style="width: 100%; height: 400px;">
-					</iframe>
-				</div>
-				<div class="inner">
-					<header>
-						<h2>Symergy</h2><h3 class="date">2022/2022</h3>
-						
-					</header>
-					<p> Symergy is a challenging "Die and Retry" platformer built around a unique core mechanic: "As above, so below" (the theme of the Epic Games MegaJam 2022). In this game, you control a character who can switch between two parallel worlds—one bathed in light above and another shrouded in darkness below. Actions in one world have distinct consequences in the other, requiring players to think strategically and master the interplay between both realms. Only one week of work to develop this game with 4 collaborators.
-					<br> <a class="effect-5" href="https://higum.itch.io/symergy-v2" target="_blank"><i>Here an access to the itch.io page</i></a>
-					<br>
-					<br><u>My Duties:</u> All User Interface, settings, menus,... Link between the 2 worlds with StreamLevel of Unreal Engine. Tutorial level to learn the mechanics. VFX, SFX and materials.
-					<br><span class="marge right green">Unreal Engine 4</span>
-					<br><span class="marge right green">C++/Blueprints</span>
-					<br>
-					</p>
-				</div>
-			</article>
-			<button href="#twelve" class="button style5 scrolly">Next</button>
-	 		<!-- Feature 12 -->
-			 <article id="twelve" class="container box style1 right Vertical"><!--MrBombe-->
-				<div class="image fit">
-					<iframe src="https://www.youtube.com/embed/Y0Cr2w6YSW4?si=odq80_0vlivQcSQ5"
-						title="YouTube video player" 
-						frameborder="0" 
-						allowfullscreen
-						style="width: 100%; height: 400px;">
-					</iframe>
-				</div>
-				<div class="inner">
-					<header>
-						<h2>MrBombe</h2><h3 class="date">2022/2022</h3>
-						
-					</header>
-					<p> Collaborated with two colleagues to develop a multiplayer Bomberman-style game, focusing on implementing robust networking features. The objective: outlast all opponents and be the last survivor.
-					<br> <a class="effect-5" href="https://dragnansia.itch.io/mrbombe" target="_blank"><i>Here an access to the itch.io page</i></a>
-					<br>
-					<br><u>My Duties:</u> Networking between clients and server. UI/UX. 3C : Player Controller, Camera and Character.
-					<br><span class="marge right green">Unreal Engine 4</span>
-					<br><span class="marge right green">C++/Blueprints</span>
-					<br>
-					</p>
-				</div>
-			</article>
-			<button href="#eleven" class="button style5 scrolly">Next</button>
-		<!-- Feature 11 -->
-			<article id="eleven" class="container box style1 right Vertical"><!--KatApp-->
-				<div class="image fit"><img src="images/Projects/KatApp.png" alt="" /></div>
-				<div class="inner">
-					<header>
-						<h2>KatApp</h2><h3 class="date">2021/2021</h3>
-						
-					</header>
-					<p> It's a application made with React-Native Framework. We implement different PowerBI reports in this app to controle the market business with data access hierarchy. 
-					<br>
-					<br><u>My Duties:</u> Implement connection with AzureAD and PowerBI report in the application.
-					<br><span class="marge right green">React-Native</span>
-					<br><span class="marge right green">JS / TypeScript</span>
-					<br>
-					</p>
-				</div>
-			</article>
-			<button href="#ten" class="button style5 scrolly">Next</button>
-		<!-- Feature 10 -->
-			<article id="ten" class="container box style1 left Horizontal"><!--KatAzGame-->
-				<a href="https://sakatalysekatazdev.z6.web.core.windows.net/" target="_blank" class="image fit"><img src="images/Projects/KatAzGame.png" alt="" /></a>
-				<div class="inner">
-					<header>
-						<h2>KatAz</h2><h3 class="date">2021/2021</h3>
-						
-					</header>
-					<p> It's a game made with IA Azure cognitive services of Microsoft Azure. We implement Speech to Text, Luis, and Computer Vision of Azure in Unity WebGl and Javascript. To show what can we do with Azure. 
-					<br>
-					<br><u>My Duties:</u> Implement this services to Unity and use them, through an interactive video game.
-					<br><span class="marge right green">Unity</span>
-					<br><span class="marge right green">C# / Javascript</span>
-					<br>
-					<!--<a href="https://sakatalysekatazdev.z6.web.core.windows.net/" target="_blank" class="button style"><span>Play Game</span></a>-->
-					</p>
-				</div>
-			</article>
-			<button href="#nine" class="button style5 scrolly">Next</button>
-		<!-- Feature 9 -->
-			<article id="nine" class="container box style1 right Vertical"><!--Fallen-->
-				<div class="image fit">
-					<iframe src="https://www.youtube.com/embed/IpKLKkza8Qg?si=_kiqUWoI4WomvZw2"
-						title="YouTube video player" 
-						frameborder="0" 
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-						referrerpolicy="strict-origin-when-cross-origin"
-						allowfullscreen
-						style="width: 100%; height: 400px;">
-					</iframe>
-				</div>
-				<div class="inner">
-					<header>
-						<h2>Fallen</h2><h3 class="date">2019/2020</h3>
-						
-					</header>
-					<p>Here is a tutorial from the game "Fallen" with which we programmed / modeled with 7. There is a pangolin that helps you with instructions.
-					<br>
-					<br><u>My Duties:</u> I programmed it, I also worked on the UI, the design and the shaders.
-					<br><span class="marge right green">Unreal Engine 4</span>
-					<br><span class="marge right green">C++/Blueprints</span>
-					<br>
-					</p>
-				</div>
-			</article>
-			<button href="#eight" class="button style5 scrolly">Next</button>
-
-		<!-- Feature 8 -->
-			<article id="eight" class="container box style1 left Vertical">
-				<a href="https://projetreem.github.io/" target="_blank" class="image fit"><img src="images/Projects/AfficheREEM.png" alt=""/></a>
-				<div class="inner">
-					<header>
-						<h2>REEM</h2><h3 class="date">2019/2020</h3>
-					</header>
-					<p>This is a RTS(Real Time Strategy) game done with 17 collaborators. We've had 2 weeks to develop this game.  <br><br>	We were a team of 8 modellers and 9 programmers. We programmed the NPC&apos;s with 2 collaborators.
-					<br>
-					<br><u>My Duties:</u> We programmed the NPCs with 2 collaborators. 
-					<br><span class="marge right green">Unity 3D</span>
-					<br><span class="marge right green">C#</span>
-					</p>
-				</div>
-			</article>
-			<button href="#seven" class="button style5 scrolly">Next</button>
-
-		<!-- Feature 7 -->
-			<article id="seven" class="container box style1 right Horizontal">
-				<a href="https://github.com/Louis-GRANGE/SysSol" target="_blank" class="image fit"><img src="images/Projects/SolarSystem.png" alt="" /></a>
-				<div class="inner">
-					<header>
-						<h2>Solar System</h2><h3 class="date">2019/2020</h3>
-					</header>
-					<p>With the Procedural Solar system, you are able to create your own solar system. Thanks to various parameters it&apos;s possible to generate asteroid, change orbit and the shape of all planets.
-					<br>
-					<br><u>My Duties:</u> I&apos;ve programmed the UI to generate a solar system and the solar systemgeneration.
-					<br><span class="marge right green">Unity 3D</span>
-					<br><span class="marge right green">C#</span>
-					</p>
-				</div>
-			</article>
-			<button href="#six" class="button style5 scrolly">Next</button>
-
-		<!-- Feature 6 -->
-			<article id="six" class="container box style1 left Horizontal">
-				<a href="https://github.com/Louis-GRANGE/LeBonCoinCoin" target="_blank" class="image fit"><img src="images/Projects/logoLeBonCoinCoin.png" alt="" /></a>
-				<div class="inner">
-					<header>
-						<h2>LeBonCoinCoin</h2><h3 class="date">2019/2020</h3>
-					</header>
-					<p>Website created with 2 collaborators. The project look like Leboncoin. <br> <a class="effect-5" href="http://leboncoincoin.herokuapp.com/" target="_blank"><i>Here an access to the website</i></a>.
-					<br>
-					<br><u>My Duties:</u> I&apos;ve programmed a few SQL request, the PHP controller, entities and created a few froms.
-					<br><span class="marge right green">Symphony 4</span>
-					<br><span class="marge right green">HTML/CSS/PHP/SQL</span>
-					</p>
-				</div>
-			</article>
-			<button href="#five" class="button style5 scrolly">Next</button>
-
-		<!-- Feature 5 -->
-			<article id="five" class="container box style1 right Horizontal">
-				<a href="https://github.com/Louis-GRANGE/SaveYourLife" target="_blank" class="image fit"><img src="images/Projects/SaveYourLife.png" alt="" /></a>
-				<div class="inner">
-					<header>
-						<h2>Save Your Life</h2><h3 class="date">2019/2020</h3>
-					</header>
-					<p>Escape Game created on Unity3D. You&apos;re a prisoner on a pirate boat and you have to find a way to escape from the boat.
-					<br>
-					<br><u>My Duties:</u> I&apos;ve programmed the riddles that allow the character to escape from the ship.
-					<br><span class="marge right green">Unity 3D</span>
-					<br><span class="marge right green">C#</span>
-					</p>
-				</div>
-			</article>
-			<button href="#four" class="button style5 scrolly">Next</button>
-
-		<!-- Feature 4 -->
-			<article id="four" class="container box style1 left Horizontal">
-				<a href="https://github.com/Louis-GRANGE/BIB-ProjetDuo" target="_blank" class="image fit"><img src="images/Projects/HumanFallEscape.png" alt="" /></a>
-				<div class="inner">
-					<header>
-						<h2>Human Fall Escape</h2><h3 class="date">2019/2020</h3>
-					</header>
-					<p>Another Escape Game created on Unity3D, the character must escape from a castle and join a train to complete the game.
-					<br>
-					<br><u>My Duties:</u> I&apos;ve programmed the riddles that allow the character to escape, then the Game design and levels.
-					<br><span class="marge right green">Unity 3D</span>
-					<br><span class="marge right green">C#</span>
-					</p>
-				</div>
-			</article>
-			<button href="#three" class="button style5 scrolly">Next</button>
-
-		<!-- Feature 3 -->
-			<article id="three" class="container box style1 right Horizontal">
-				<a href="https://gofile.io/d/M43kg7" target="_blank" class="image fit"><img src="images/Projects/RocherSaintMichel.png" alt="" /></a>
-				<div class="inner">
-					<header>
-						<h2>Rocher Saint-Michel Tutored Project</h2><h3 class="date">2018/2019</h3>
-					</header>
-					<p>Software created on Unreal Engine 4. The character can walk around the Rocher Saint-Michel located in Le Puy-en-Velay (43) and change the environment. The character can also add 3D models, moreover, he has the possibility to access to major points of the historic monument.
-					<br>
-					<br><u>My Duties:</u> I&apos;ve programmed all the UI of the application as well as the interactions with the models.
-					<br><span class="marge right green">Unreal Engine 4</span>
-					<br><span class="marge right green">C++/Blueprints</span>
-					</p>
-				</div>
-			</article>
-			<button href="#two" class="button style5 scrolly">Next</button>
-
-		<!-- Feature 2 -->
-			<article id="two" class="container box style1 left Horizontal">
-				<a href="https://github.com/Louis-GRANGE/Unity-Vivaldia" target="_blank" class="image fit"><img src="images/Projects/Vivaldia.png" alt="" /></a>
-				<div class="inner">
-					<header>
-						<h2>Vivaldia</h2><h3 class="date">2018/2019</h3>
-					</header>
-					<p>Game created on Unity2D. The character must regain the 4 seasons objects to help the world. In order to accomplish the mission, the character has to explore the world, think, fight and be attentive to ennemies.
-					<br>
-					<br><u>My Duties:</u> I&apos;ve programmed the riddles of dungeons and all competence of seasons objects.
-					<br><span class="marge right green">Unity 2D</span>
-					<br><span class="marge right green">C#</span>
-					</p>
-				</div>
-			</article>
-			<button href="#one" class="button style5 scrolly">Next</button>
-
-		<!-- Feature 1 -->
-			<article id="one" class="container box style1 right Horizontal">
-				<a href="https://github.com/Louis-GRANGE/The_Phoenix" target="_blank" class="image fit"><img src="images/Projects/ThePhoenix.png" alt="" /></a>
-				<div class="inner">
-					<header>
-						<h2>The Phoenix</h2><h3 class="date">2018/2019</h3>
-					</header>
-					<p>Game created on Unity2D. The game has 2 levels. To complete the game, the character must feed the chicks while surviving enemied such as cats or hunters.
-					<br>
-					<br><u>My Duties:</u> I&apos;ve programmed the character, the enemies, the skills, the game design and the levels.
-					<br><span class="marge right green">Unity 2D</span>
-					<br><span class="marge right green">C#</span>
-					</p>
-				</div>
-			</article>
-			<button href="#zero" class="button style5 scrolly">Next</button>
-
-		<!-- Feature 0 -->
-			<article id="zero" class="container box style1 left Vertical">
-				<a href="#" target="_blank" class="image fit"><img src="images//Projects/Incubator.png" alt="" /></a>
-
-				<div class="inner">
-					<header>
-						<h2>The Incubator</h2><h3 class="date">2017/2018</h3>
-					</header>
-					<p>The Incubator is a project created with 3 collaborators during my last year of high school.
-					<br>We used an Arduino card and we have created a website to acces a large amount of data.
-					<br>
-					<br><u>My Duties:</u> I&apos;ve programmed the website that enables the reception and the access to all this data, and the heating system.
-					<br><span class="marge right green">Arduino</span>
-					<br><span class="marge right green">C++/Arduino</span>
-					</p>
-				</div>
-			</article>
 			
-			<button href="#header" class="button style5 scrolly">GO UP</button>
 
-		<!-- Contact --><!--
-			<article class="container box style3">
-				<header>
-					<h2>Nisl sed ultricies</h2>
-					<p>Diam dignissim lectus eu ornare volutpat orci.</p>
-				</header>
-				<form method="post" action="#">
-					<div class="row gtr-50">
-						<div class="col-6 col-12-mobile"><input type="text" class="text" name="name" placeholder="Name" /></div>
-						<div class="col-6 col-12-mobile"><input type="text" class="text" name="email" placeholder="Email" /></div>
-						<div class="col-12">
-							<textarea name="message" placeholder="Message"></textarea>
-						</div>
-						<div class="col-12">
-							<ul class="actions">
-								<li><input type="submit" value="Send Message" /></li>
-							</ul>
-						</div>
-					</div>
-				</form>
-			</article>-->
+			<div class="grid-container">
+				<div class="card" data-project="assets/Projects/018-FilesConverterAndTextToSpeechUEPlugin/index.html">
+					<img src="assets/Projects/018-FilesConverterAndTextToSpeechUEPlugin/images/card.png" alt="Project 2">
+					<h3>Files Converter & TextToSpeech Unreal Engine Plugin</h3>
+					<br>
+					<span class="marge green">
+						<u>Technology:</u> Unreal Engine
+						<br><u>Language:</u> Blueprints / C++
+					</span>
+				</div>
 
-		<!-- Generic -->
-		<!--
-			<article class="container box style3">
-				<header>
-					<h2>Generic Box</h2>
-					<p>Just a generic box. Nothing to see here.</p>
-				</header>
-				<section>
-					<header>
-						<h3>Paragraph</h3>
-						<p>This is a subtitle</p>
-					</header>
-					<p>Phasellus nisl nisl, varius id <sup>porttitor sed pellentesque</sup> ac orci. Pellentesque
-					habitant <strong>strong</strong> tristique <b>bold</b> et netus <i>italic</i> malesuada <em>emphasized</em> ac turpis egestas. Morbi
-					leo suscipit ut. Praesent <sub>id turpis vitae</sub> turpis pretium ultricies. Vestibulum sit
-					amet risus elit.</p>
-				</section>
-				<section>
-					<header>
-						<h3>Blockquote</h3>
-					</header>
-					<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget.
-					tempus euismod. Vestibulum ante ipsum primis in faucibus.</blockquote>
-				</section>
-				<section>
-					<header>
-						<h3>Divider</h3>
-					</header>
-					<p>Donec consectetur <a href="#">vestibulum dolor et pulvinar</a>. Etiam vel felis enim, at viverra
-					ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel. Praesent nec orci
-					facilisis leo magna. Cras sit amet urna eros, id egestas urna. Quisque aliquam
-					tempus euismod. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-					posuere cubilia.</p>
-					<hr />
-					<p>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra
-					ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel. Praesent nec orci
-					facilisis leo magna. Cras sit amet urna eros, id egestas urna. Quisque aliquam
-					tempus euismod. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-					posuere cubilia.</p>
-				</section>
-				<section>
-					<header>
-						<h3>Unordered List</h3>
-					</header>
-					<ul>
-						<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
-						<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
-						<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
-						<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
-					</ul>
-				</section>
-				<section>
-					<header>
-						<h3>Ordered List</h3>
-					</header>
-					<ol>
-						<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
-						<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
-						<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
-						<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
-					</ol>
-				</section>
-				<section>
-					<header>
-						<h3>Table</h3>
-					</header>
-					<div class="table-wrapper">
-						<table>
-							<thead>
-								<tr>
-									<th>ID</th>
-									<th>Name</th>
-									<th>Description</th>
-									<th>Price</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>45815</td>
-									<td>Something</td>
-									<td>Ut porttitor sagittis lorem quis nisi ornare.</td>
-									<td>29.99</td>
-								</tr>
-								<tr>
-									<td>24524</td>
-									<td>Nothing</td>
-									<td>Ut porttitor sagittis lorem quis nisi ornare.</td>
-									<td>19.99</td>
-								</tr>
-								<tr>
-									<td>45815</td>
-									<td>Something</td>
-									<td>Ut porttitor sagittis lorem quis nisi ornare.</td>
-									<td>29.99</td>
-								</tr>
-								<tr>
-									<td>24524</td>
-									<td>Nothing</td>
-									<td>Ut porttitor sagittis lorem quis nisi ornare.</td>
-									<td>19.99</td>
-								</tr>
-							</tbody>
-							<tfoot>
-								<tr>
-									<td colspan="3"></td>
-									<td>100.00</td>
-								</tr>
-							</tfoot>
-						</table>
+				<div class="card" data-project="assets/Projects/017-TuMwaTouSa/index.html">
+					<img src="assets/Projects/017-TuMwaTouSa/images/card.png" alt="Project 2">
+					<h3>TuMwaTouSa</h3>
+					<br>
+					<span class="marge green">
+						<u>Technology:</u> Unity
+						<br><u>Language:</u> C#
+					</span>
+				</div>
+
+				<div class="card" data-project="assets/Projects/016-ToolsDesktopSoftware/index.html">
+					<img src="assets/Projects/016-ToolsDesktopSoftware/images/card.png" alt="Project 2">
+					<h3>Tools Desktop Software</h3>
+					<br>
+					<span class="marge green">
+						<u>Technology:</u> AutoHotKey
+						<br><u>Language:</u> AutoHotKey (C++)
+					</span>
+				</div>
+
+				<div class="card" data-project="assets/Projects/015-GameEngineOnQt/index.html">
+					<img src="assets/Projects/015-GameEngineOnQt/images/card.png" alt="Project 2">
+					<h3>Game Engine On Qt</h3>
+					<br>
+					<span class="marge green">
+						<u>Technology:</u> Qt
+						<br><u>Language:</u> C++
+					</span>
+				</div>
+
+				<div class="card" data-project="assets/Projects/014-Symergy/index.html">
+					<img src="assets/Projects/014-Symergy/images/card.png" alt="Project 2">
+					<h3>Symergy</h3>
+					<br>
+					<span class="marge green">
+						<u>Technology:</u> Unreal Engine
+						<br><u>Language:</u> Blueprints / C++
+					</span>
+				</div>
+
+				<div class="card" data-project="assets/Projects/013-MrBombe/index.html">
+					<img src="assets/Projects/013-MrBombe/images/card.png" alt="Project 2">
+					<h3>Mr Bombe</h3>
+					<br>
+					<span class="marge green">
+						<u>Technology:</u> Unreal Engine
+						<br><u>Language:</u> Blueprints / C++
+					</span>
+				</div>
+
+				<div class="card" data-project="assets/Projects/012-Katapp/index.html">
+					<img src="assets/Projects/012-Katapp/images/card.png" alt="Project 2">
+					<h3>Katapp</h3>
+					<br>
+					<span class="marge green">
+						<u>Technology:</u> React-Native
+						<br><u>Language:</u> JS / TypeScript
+					</span>
+				</div>
+
+				<div class="card" data-project="assets/Projects/011-Kataz/index.html">
+					<img src="assets/Projects/011-Kataz/images/card.png" alt="Project 2">
+					<h3>Kataz</h3>
+					<br>
+					<span class="marge green">
+						<u>Technology:</u> Unity & Azure
+						<br><u>Language:</u> C# / Javascript
+					</span>
+				</div>
+
+				<div class="card" data-project="assets/Projects/010-Fallen/index.html">
+					<img src="assets/Projects/010-Fallen/images/card.png" alt="Project 2">
+					<h3>Fallen</h3>
+					<br>
+					<span class="marge green">
+						<u>Technology:</u> Unreal Engine
+						<br><u>Language:</u> Blueprints / C++
+					</span>
+				</div>
+
+				<div class="card" data-project="assets/Projects/009-REEM/index.html">
+					<img src="assets/Projects/009-REEM/images/card.png" alt="Project 2">
+					<h3>REEM</h3>
+					<br>
+					<span class="marge green">
+						<u>Technology:</u> Unity
+						<br><u>Language:</u> C#
+					</span>
+				</div>
+
+				<div class="card" data-project="assets/Projects/008-SolarSystem/index.html">
+					<img src="assets/Projects/008-SolarSystem/images/card.png" alt="Project 2">
+					<h3>Solar System</h3>
+					<br>
+					<span class="marge green">
+						<u>Technology:</u> Unity
+						<br><u>Language:</u> C#
+					</span>
+				</div>
+
+				<div class="card" data-project="assets/Projects/007-LeBonCoinCoin/index.html">
+					<img src="assets/Projects/007-LeBonCoinCoin/images/card.png" alt="Project 2">
+					<h3>LeBonCoinCoin</h3>
+					<br>
+					<span class="marge green">
+						<u>Technology:</u> Symphony 4
+						<br><u>Language:</u> HTML / CSS / PHP / SQL
+					</span>
+				</div>
+
+				<div class="card" data-project="assets/Projects/006-SaveYourLife/index.html">
+					<img src="assets/Projects/006-SaveYourLife/images/card.png" alt="Project 2">
+					<h3>Save Your Life</h3>
+					<br>
+					<span class="marge green">
+						<u>Technology:</u> Unity
+						<br><u>Language:</u> C#
+					</span>
+				</div>
+
+				<div class="card" data-project="assets/Projects/005-HumanFallEscape/index.html">
+					<img src="assets/Projects/005-HumanFallEscape/images/card.png" alt="Project 2">
+					<h3>Human Fall Escape</h3>
+					<br>
+					<span class="marge green">
+						<u>Technology:</u> Unity
+						<br><u>Language:</u> C#
+					</span>
+				</div>
+
+				<div class="card" data-project="assets/Projects/004-Rocher_Saint-Michel/index.html">
+					<img src="assets/Projects/004-Rocher_Saint-Michel/images/card.png" alt="Project 2">
+					<h3>Rocher Saint-Michel</h3>
+					<br>
+					<span class="marge green">
+						<u>Technology:</u> Unreal Engine
+						<br><u>Language:</u> Blueprints / C++
+					</span>
+				</div>
+
+				<div class="card" data-project="assets/Projects/003-Vivaldia/index.html">
+					<img src="assets/Projects/003-Vivaldia/images/card.png" alt="Project 2">
+					<h3>Vivaldia</h3>
+					<br>
+					<span class="marge green">
+						<u>Technology:</u> Unity
+						<br><u>Language:</u> C#
+					</span>
+				</div>
+
+				<div class="card" data-project="assets/Projects/002-ThePhoenix/index.html">
+					<img src="assets/Projects/002-ThePhoenix/images/card.png" alt="Project 2">
+					<h3>The Phoenix</h3>
+					<br>
+					<span class="marge green">
+						<u>Technology:</u> Unity
+						<br><u>Language:</u> C#
+					</span>
+				</div>
+
+				<div class="card" data-project="assets/Projects/001-TheIncubator/index.html">
+					<img src="assets/Projects/001-TheIncubator/images/card.png" alt="Card REEM">
+					<h3>The Incubator</h3>
+					<br>
+					<span class="marge green">
+						<u>Technology:</u> Arduino
+						<br><u>Language:</u> Arduino / C++ / HTML / CSS
+					</span>
+				</div>
+		
+				<!-- Include the modal -->
+				<div id="projectModal" class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<!-- Iframe to load external content -->
+						<iframe id="modalIframe" src="" frameborder="0" style="width: 100%; height: 500px;"></iframe>
 					</div>
-				</section>
-				<section>
-					<header>
-						<h3>Form</h3>
-					</header>
-					<form method="post" action="#">
-						<div class="row">
-							<div class="col-6 col-12-mobile">
-								<input class="text" type="text" name="name" id="name" value="" placeholder="John Doe" />
-							</div>
-							<div class="col-6 col-12-mobile">
-								<input class="text" type="text" name="email" id="email" value="" placeholder="johndoe@domain.tld" />
-							</div>
-							<div class="col-12">
-								<select name="department" id="department">
-									<option value="">Choose a department</option>
-									<option value="1">Manufacturing</option>
-									<option value="2">Administration</option>
-									<option value="3">Support</option>
-								</select>
-							</div>
-							<div class="col-12">
-								<input class="text" type="text" name="subject" id="subject" value="" placeholder="Enter your subject" />
-							</div>
-							<div class="col-12">
-								<textarea name="message" id="message" placeholder="Enter your message"></textarea>
-							</div>
-							<div class="col-12">
-								<ul class="actions">
-									<li><input type="submit" value="Submit" /></li>
-									<li><input type="reset" class="style3" value="Clear Form" /></li>
-								</ul>
-							</div>
-						</div>
-					</form>
-				</section>
-			</article>
-		-->
+				</div>
+			</div>
+			
 
 		<section id="footer">
 			<ul class="icons">
@@ -661,11 +330,6 @@ With a strong foundation in programming and problem-solving, I thrive on turning
 				<li><a href="mailto: l.grange43@gmail.com" target="_blank" class="icon brands fa-google-plus-g"><span class="label">Gmail</span></a></li>				
 				<li><a href="https://github.com/Louis-GRANGE" target="_blank" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
 			</ul>
-			<div class="copyright">
-				<ul class="menu">
-					<!--<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>-->
-				</ul>
-			</div>
 		</section>
 
 		<!-- Scripts -->
@@ -675,7 +339,11 @@ With a strong foundation in programming and problem-solving, I thrive on turning
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/loadModal.js"></script>
+			<script src="assets/js/script.js"></script>
 
+			<!-- Pixel Background =-->
 			<script src="assets/js/Pixel/Tools.js"></script>
 			<script src="assets/js/Pixel/WritingPixel/pixelFonts.js"></script>
 			<script src="assets/js/Pixel/vector.js"></script>

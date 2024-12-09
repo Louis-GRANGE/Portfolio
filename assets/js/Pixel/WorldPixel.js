@@ -2,7 +2,7 @@ var ColorPalette = ["#35b88f", "#152E33", "#23233a", "#9099cd", "#4d529a", "#ddd
 var PixelColor = "#23233a";
 var AllPixelTypeCanSpawn = [Sand, Rock, Water, Wood, Fire];
 var PixelTypeToSpawn = Pixel;
-var RangePixelToSpawn = 10;
+var RangePixelToSpawn = 5;
 var FrameRate = 10;
 var CellSize = 7; //3 Si la valeur est un float (ex: 0.5) il y a une grille qui apparait
 
