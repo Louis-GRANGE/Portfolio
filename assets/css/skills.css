@@ -1,0 +1,53 @@
+.skill-section {
+    margin: 0 auto;
+    width: 960px;
+    margin-top: 9em;
+    text-align: center;
+    background-color: #ffffff;
+    
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+    margin: 20px;
+}
+
+.skill-item {
+    background-color: #ffffff; /* Fond blanc pour chaque card */
+    width: 150px; /* Largeur fixe pour toutes les cards */
+    height: 200px; /* Hauteur fixe pour toutes les cards */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Ombre pour l'effet card */
+    text-align: center;
+    transition: transform 0.2s ease-in-out; /* Animation au hover */
+}
+
+.skill-item:hover {
+    transform: translateY(-5px); /* Soulève légèrement au survol */
+}
+
+.skill-item img {
+    width: 80px; /* Ajustez la taille des logos */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.skill-item p {
+    font-size: 1rem;
+    color: #333;
+    margin: 0;
+    font-weight: bold;
+}
