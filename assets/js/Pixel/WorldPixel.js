@@ -337,11 +337,11 @@ function StartAnim()
 
 function FireLoadingAnim()
 {
-	var sizeCircle = Math.min(WorldPixel.length/3, WorldPixel[0].length/3);
+	var sizeCircle = Math.min(WorldPixel.length/2, WorldPixel[0].length/2);
 	var ElipsePoints = getEllipseContour(new vector2D(WorldPixel.length/2, WorldPixel[0].length/2), sizeCircle, sizeCircle);
 
 	var point = ElipsePoints[iteration%ElipsePoints.length]
-	addPixelsInCircle(Fire, point, 5);
+	addPixelsInCircle(Fire, point, 3);
 	iteration += 3;
 }
 

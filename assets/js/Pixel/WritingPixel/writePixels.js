@@ -44,10 +44,21 @@ function UpdateCharacters() {
     }
 }
 
+function Write(sentence) {
+    for (let i = 0; i < sentence.length; i++) {
+        let character = sentence[i];
+        var pixelChar = new Character(character, getPosAtIndex(cursorIndexPos), 1);
+        CharacterLine.push(pixelChar);
+        activePhysicToTheLastCharacter(1000);
+    }
+}
+
+
 
 // Écoute les événements clavier
 document.addEventListener('keydown', function(event) {
     const character = event.key
+    console.log(character);
     if(character == "Backspace")
     {
         if(CharacterLine.length == 0) return;
@@ -64,3 +75,6 @@ const activePhysicToTheLastCharacter = retriggerableDelay(function() {
         CharacterLine[CharacterLine.length-1].activePhysics();
     activePhysicToTheLastCharacter(activePhysicToTheLastCharacter.delay() * 0.95);
 }, 1000);
+
+
+Write('Welcome');
