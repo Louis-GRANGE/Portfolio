@@ -38,3 +38,12 @@ document.querySelectorAll('.card').forEach(card => {
         showModal(projectUrl);
     });
 });
+
+document.querySelectorAll('.skill-item').forEach(item => {
+    item.addEventListener('click', function() {
+        const url = this.getAttribute('data-link');
+        if (url) {
+            window.open(url, '_blank');
+        }
+    });
+});

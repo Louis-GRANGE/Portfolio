@@ -11,36 +11,45 @@
 }
 
 .skills-grid {
+    display: flex;
+    flex-direction: column;
+}
+
+.skill-category {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 20px;
-    padding: 20px;
-    justify-items: center;
-    margin: 20px;
+    margin-bottom: 30px;
+}
+
+.skills-grid h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
 }
 
 .skill-item {
-    background-color: #ffffff; /* Fond blanc pour chaque card */
-    width: 150px; /* Largeur fixe pour toutes les cards */
-    height: 200px; /* Hauteur fixe pour toutes les cards */
+    background-color: #f9f9f9; /* Card White background */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 15px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Ombre pour l'effet card */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Shadow card effect */
     text-align: center;
-    transition: transform 0.2s ease-in-out; /* Animation au hover */
+    transition: transform 0.2s ease-in-out; /* Anim hover */
+    position: relative;
+    cursor: pointer; /* Change Cursor style */
+    overflow: hidden;
 }
 
 .skill-item:hover {
-    transform: translateY(-5px); /* Soulève légèrement au survol */
+    transform: translateY(-5px); /* Anim on Mouse on it */
 }
 
 .skill-item img {
-    width: 80px; /* Ajustez la taille des logos */
-    height: auto;
+    width: 80px; /* set logo size */
+    height: 80px;
     margin-bottom: 10px;
 }
 
@@ -50,3 +59,4 @@
     margin: 0;
     font-weight: bold;
 }
+
