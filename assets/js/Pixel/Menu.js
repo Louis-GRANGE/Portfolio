@@ -13,10 +13,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     menu.addEventListener('mouseleave', function () {
-        menu.classList.remove('active');
+        if (!draggingOverPage) {
+            menu.classList.remove('active');
+        }
     });
 });
-
 
 let draggingOverPage = false; // Variable pour suivre si le glisser est au-dessus de la page
 
@@ -28,6 +29,7 @@ document.addEventListener('drop', handleDrop, false);
 
 // Fonction appelée lorsque le glisser entre dans la zone cible
 function handleDragEnter(event) {
+    console.log('DragEnter');
     event.preventDefault(); // Empêcher le comportement par défaut
     if (!draggingOverPage) {
         ShowMenu();
@@ -38,8 +40,8 @@ function handleDragEnter(event) {
 // Fonction appelée lorsque le glisser quitte la zone cible
 function handleDragLeave(event) {
     event.preventDefault(); // Empêcher le comportement par défaut
-    draggingOverPage = false;
-    if (!event.relatedTarget || (event.relatedTarget === document.documentElement)) {
+    if (!event.relatedTarget || event.relatedTarget === document.documentElement) {
+        draggingOverPage = false;
         HideMenu();
     }
 }
@@ -57,17 +59,14 @@ function handleDrop(event) {
     // Traiter l'image déposée ici
 }
 
-function ShowMenu()
-{
+function ShowMenu() {
     console.log("ShowMenu");
     DraggingImage = true;
     menu.classList.add('active');
 }
 
-function HideMenu()
-{
+function HideMenu() {
     console.log("HideMenu");
     DraggingImage = false;
-    menu.classList.remove('active');
+    menu.classList.remove('active'); // Cache le menu après avoir glissé
 }
-

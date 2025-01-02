@@ -17,7 +17,7 @@ document.addEventListener('click', function(event) {
         ImagePreview = null;
         // Prévisualisation dans la zone de dépôt
        const dropZone = document.getElementById('drop-zone');
-       dropZone.innerHTML = ''; // Supprime le contenu précédent
+       dropZone.innerHTML = 'Drop an image here'; // Supprime le contenu précédent
     }
 });
 

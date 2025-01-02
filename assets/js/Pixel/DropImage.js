@@ -1,5 +1,6 @@
 var dropZone = document.getElementById('drop-zone');
 var canvas = PixelArea.canvas;
+var usePhysicsOnUploadImg = false;
 
 // Éviter le comportement par défaut du glisser-déposer
 ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
@@ -9,7 +10,7 @@ var canvas = PixelArea.canvas;
 
 function preventDefaults(e) {
   e.preventDefault();
-  e.stopPropagation();
+  //e.stopPropagation();
 }
 
 // Gérer le glisser-déposer
@@ -112,8 +113,8 @@ function drawPixelImage(imageData, MousePosition) {
   var width = imageData.width; // Largeur de l'image en pixels
   var height = imageData.height; // Hauteur de l'image en pixels
 
-  for (var y = 0; y < width; y++) {
-    for (var x = 0; x < height; x++) {
+  for (var y = 0; y < height; y++) {
+    for (var x = 0; x < width; x++) {
       var index = getIndex(x, y, width);
       var color = {
         r: data[index],
@@ -122,7 +123,7 @@ function drawPixelImage(imageData, MousePosition) {
         a: data[index + 3],
       };
 
-      if(color.a > 0)
+      if(color.a > 200) // dont want to create invisible pixels
       {
         var PixelPos = new vector2D(Math.floor(x/CellSize), Math.floor(y/CellSize)).add(new vector2D(Math.floor((MousePosition.x - width/2)/CellSize), Math.floor((MousePosition.y - height/2)/CellSize)));
         if(IsValidPos(PixelPos))
@@ -142,16 +143,16 @@ function drawPixelImage(imageData, MousePosition) {
 }
 
 function togglePhysics() {
-  usePhysicsOnUploadImg = !usePhysicsOnUploadImg;
-
   var usePhysicsCheckbox = document.getElementById("usePhysicsCheckbox");
   var usePhysicsLabel = document.getElementById("usePhysicsLabel");
 
   if (usePhysicsCheckbox.checked) {
       usePhysicsLabel.classList.remove("false");
       usePhysicsLabel.classList.add("true");
+      usePhysicsOnUploadImg= true;
   } else {
       usePhysicsLabel.classList.remove("true");
       usePhysicsLabel.classList.add("false");
+      usePhysicsOnUploadImg = false;
   }
 }

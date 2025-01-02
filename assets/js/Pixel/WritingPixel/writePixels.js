@@ -58,7 +58,7 @@ function Write(sentence) {
 // Écoute les événements clavier
 document.addEventListener('keydown', function(event) {
     const character = event.key
-    console.log(character);
+    //console.log(character);
     if(character == "Backspace")
     {
         if(CharacterLine.length == 0) return;

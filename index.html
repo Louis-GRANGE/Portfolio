@@ -41,30 +41,42 @@
 			}
 		</style>
 		
-		<div id="burger-icon">☰</div>
-		<div class="menu">
-			<ul class="menu-items">
-				<button onclick="changePixelType(Sand)">Sand</button>
-				<button onclick="changePixelType(Rock)">Rock</button>
-				<button onclick="changePixelType(Water)">Water</button>
-				<button onclick="changePixelType(Wood)">Wood</button>
-				<button onclick="changePixelType(Fire)">Fire</button>
-				<!--<button onclick="changePixelType(Explosion)">Explosion</button>-->
-				<button onclick="changePixelType(Pixel)">Pixel</button>
-				<button onclick="resetPixelWorld()" class="red">Reset</button>
-				<!-- Ajoutez d'autres boutons pour les types de pixels supplémentaires -->
-			
-				<label for="radiusSlider">Radius: <span id="radiusValue">5</span></label>
-				<input type="range" id="radiusSlider" min="1" max="20" value="2" onchange="changeRadius(this.value)">
-				<!--<label for="usePhysicsCheckbox" id="usePhysicsLabel">
-					<input type="checkbox" id="usePhysicsCheckbox" onchange="togglePhysics()"> Use Physics
-				</label>-->
-						
-				<div id="drop-zone"> Drop an image here </div><!--Drop an image here</div>-->
-			</ul>
-		</div>
 	</head>
 	<body class="is-preload">
+
+		<!-- Menu -->
+			<div id="burger-icon">☰</div>
+			<div class="menu">
+				<ul class="menu-items">
+					<!-- New category for Physics and Drop Zone -->
+					<div class="menu-category">
+						<h3 class="category-title">Pixel type</h3>
+						<button onclick="changePixelType(Sand)">Sand</button>
+						<button onclick="changePixelType(Rock)">Rock</button>
+						<button onclick="changePixelType(Water)">Water</button>
+						<button onclick="changePixelType(Wood)">Wood</button>
+						<button onclick="changePixelType(Fire)">Fire</button>
+						<button onclick="changePixelType(Pixel)">Pixel</button>
+					</div>
+					
+					<button onclick="resetPixelWorld()" class="red">Reset Canvas</button>
+					<label for="radiusSlider">Radius: <span id="radiusValue">5</span></label>
+					<input type="range" id="radiusSlider" min="1" max="20" value="2" oninput="changeRadius(this.value)">
+					
+					<!-- New category for Physics and Drop Zone -->
+					<div class="menu-category">
+						<h3 class="category-title">Draw Image Pixel</h3>
+						
+						<!-- Use Physics Checkbox -->
+						<label for="usePhysicsCheckbox" id="usePhysicsLabel" class="false">
+							<input type="checkbox" id="usePhysicsCheckbox" onchange="togglePhysics()"> Use Physics
+						</label>
+
+						<!-- Drop Zone -->
+						<div id="drop-zone">Drop an image here</div>
+					</div>
+				</ul>
+			</div>
 
 		<!-- Header -->
 			<section id="header">

@@ -1,132 +1,157 @@
-/*.menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100px;
-    background-color: #333;
-    padding: 10px;
-    color: white;
-    z-index: 50;
-}*/
-
-
-/************************** MENU ****************************/
 .menu {
     position: fixed;
     top: 0;
-    left: -200px; /* menu caché par défaut */
-    width: 200px;
-    height: 100%;
-    background-color: #333;
-    transition: left 0.3s ease;
+    left: -250px; /* hidden by default */
+    width: 250px;
+    height: 100vh; /* Set the height to the full viewport height */
+    background-color: #222; /* Darker background for a more elegant look */
+    transition: left 0.3s ease, background-color 0.5s ease;
     z-index: 50;
-    padding: 10px;
+    padding: 15px;
+    box-shadow: 3px 0 5px rgba(0, 0, 0, 0.2);
+    border-right: 2px solid #444;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Espace les éléments uniformément */
+    box-sizing: border-box;
 }
 
 .menu.active {
-    left: 0; /* afficher le menu */
+    left: 0;
 }
 
 #burger-icon {
     cursor: pointer;
-    color: white;
-    font-size: 24px;
-    width: 1em; /* Taille de la police */
-    height: 1em; /* Taille de la police */
-    line-height: 1em; /* Aligner le texte verticalement */
-    font-size: 1em; /* Taille de la police */
-    text-align: center;
-    /*transition: transform 0.3s ease;*/
+    color: #fff;
+    font-size: 28px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 100;
 }
 
 .menu-items {
     list-style-type: none;
     padding: 0;
-    margin: 20px 0;
+    margin: 0;
+    flex-grow: 1; /* Fait en sorte que les items prennent le maximum d'espace */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; /* Espacement vertical des boutons */
 }
 
-.menu-items li {
-    margin-bottom: 10px;
-}
-
-.menu-items li a {
-    display: block;
+.menu-items button {
+    width: 100%;
+    padding: 1.5vh; /* Padding adapté à la hauteur de la fenêtre */
+    margin-bottom: 0.1vh; /* Espace entre les boutons */
+    background-color: #444;
     color: white;
-    text-decoration: none;
-    padding: 5px 10px;
+    border: 1px solid #555;
     border-radius: 5px;
+    cursor: pointer;
+    font-size: 2vh; /* Taille de la police en fonction de la hauteur */
     transition: background-color 0.3s ease;
 }
 
-.menu-items li a:hover {
+.menu-items button:hover {
     background-color: #555;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-/********************* In The Menu **********************/
-.menu button {
-    display: block;
-    width: 100%;
-    margin-top: 10px;
-    padding: 8px;
-    margin-bottom: 10px;
-    background-color: #555;
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-size: 10px;
-}
-
-.menu button:hover {
-    background-color: #777;
-}
-
-.menu button.red {
+.menu-items button.red {
     background-color: #880000;
 }
 
-.menu button.red:hover {
-    background-color: #550000;
+.menu-items button.red:hover {
+    background-color: #aa0000;
 }
-/* Ajoutez ces styles pour le slider */
+
 .menu label {
     display: block;
     margin-top: 10px;
     color: white;
-    font-size: 15px;
+    font-size: 1.8vh; /* Taille de la police en fonction de la hauteur */
 }
 
 .menu input[type="range"] {
     display: block;
-    width: 80%;
+    width: 100%;
+    margin-top: 5px;
+    -webkit-appearance: none;
+    background-color: #666;
+    height: 5px;
+    border-radius: 5px;
+}
+
+.menu input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: #aa0000;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.menu input[type="range"]:hover {
+    background-color: #777;
+}
+
+.menu-category {
+    margin-top: 2vh;
+    padding: 1vh;
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.category-title {
+    font-size: 2vh; /* Taille de la police en fonction de la hauteur */
+    color: #ffdf7e; /* Light gold for a visual contrast */
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 #drop-zone {
-    border: 2px dashed #ccc; /* Style de la bordure pour indiquer la zone de dépôt */
-    padding: 5px; /* Espace intérieur de la zone de dépôt */
-    margin-top: 10px; /* Espace entre le dernier bouton et la zone de dépôt */
-    pointer-events: auto; /* Réactive les interactions de la souris */
-    font-size: 5px;
+    border: 2px dashed #ccc;
+    padding: 1vh;
+    margin-top: 1vh;
+    background-color: #2a2a2a;
+    color: white;
+    font-size: 1.8vh;
     text-align: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-#drop-zone img {
-    max-width: 100%;
-    max-height: 100%;
+#drop-zone:hover {
+    background-color: #333;
+    border-color: #888;
+}
+
+#drop-zone:active {
+    background-color: #555;
+    border-color: #aaa;
 }
 
 #usePhysicsLabel {
-    margin-top: 10px;
-    font-size: 10px; /* Ajustez la taille de la police selon vos préférences */
+    cursor: pointer;
+    margin-top: 1vh;
+    font-size: 1.8vh; /* Ajuste la taille de la police */
+    display: flex;
+    align-items: center;
 }
 
 #usePhysicsCheckbox {
-    margin-right: 5px; /* Espace entre la case à cocher et le texte */
+    margin-right: 5px;
+    width: 14px;
+    height: 14px;
 }
-/* Ajoutez ces styles pour les couleurs */
+
 #usePhysicsLabel.true {
     color: green;
 }
 
 #usePhysicsLabel.false {
-    color: white;
+    color: rgb(145, 0, 0);
 }
