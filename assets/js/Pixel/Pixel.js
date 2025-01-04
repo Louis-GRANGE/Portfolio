@@ -8,7 +8,7 @@ class Pixel
 		this.colorPalette = ColorPalette;//['#FF0000', '#00FF00', '#0000FF', '#FFFF00']; // Ajoutez d'autres couleurs selon vos besoins
         this.colorstyle = this.colorPalette[Math.floor(Math.random() * this.colorPalette.length)];
         
-		this.forceDir =  getCurrentGravityDir();
+		this.forceDir = getCurrentGravityDir();
 		this.forceStrength = 1;
 		this.weight = RandInt(1, 3);
 

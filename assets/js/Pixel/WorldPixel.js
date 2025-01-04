@@ -186,7 +186,7 @@ function changeGravityDir(newGrav)
     for (var x = 0; x < WorldPixel.length; x += 1) {
     	for (var y = 0; y <= WorldPixel[x].length - 1; y++) {
 			if(WorldPixel[x][y])
-				WorldPixel[x][y].gravityDir = gravityDir;
+				WorldPixel[x][y].forceDir = gravityDir;
 	    }
 	}
 }
