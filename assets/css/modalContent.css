@@ -85,6 +85,10 @@ span.right {
     text-align: left;
 }
 
+strong {
+    font-weight: bold;
+}
+
 .project-img {
     width: auto;
     max-width: 100%;
