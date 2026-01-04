@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Picker Plugin Documentation</title>
+
+    <link rel="stylesheet" href="../../css/modalContent.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="html-modal">
+        <h2>Color Picker Plugin Documentation</h2>
+        <div class="slider-container">
+            <div class="slides" id="slider">
+                <img src="./images/card.png" alt="Card View">
+                <img src="./images/Gallery-00.png" alt="Gallery 00">
+                <img src="./images/Gallery-01.png" alt="Gallery 01">
+                <img src="./images/Gallery-02.png" alt="Gallery 02">
+                <img src="./images/Gallery-03.png" alt="Gallery 03">
+                <img src="./images/Gallery-04.png" alt="Gallery 04">
+                <img src="./images/Gallery-05.png" alt="Gallery 05">
+                <img src="./images/Gallery-06.png" alt="Gallery 06">
+                <img src="./images/Gallery-07.png" alt="Gallery 07">
+                <img src="./images/Gallery-08.png" alt="Gallery 08">
+                <img src="./images/Gallery-09.png" alt="Gallery 09">
+            </div>
+            <button class="slider-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="slider-btn next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+        <div class="description">
+            <h3>Overview</h3>
+            <p>The <strong>Color Picker Plugin</strong> is a modular Unreal Engine plugin providing a customizable color picker system built with <strong>Widget Blueprints</strong> and a <strong>C++ backend</strong>. This plugin allows developers to integrate color selection tools such as a color wheel, sliders, and input fields into their projects.</p>
+                        
+            </br>
+            <h3>Features</h3>
+            <ul class="duties-list">
+                <li>Modular Widget Blueprint-based UI</li>
+                <li>Color wheel, sliders, and numeric input widgets</li>
+                <li>Runtime-ready C++ backend</li>
+                <li>Optional desktop-level mouse color sampling (Windows only)</li>
+                <li>Easy integration into existing UI systems</li>
+                <li>No external dependencies</li>
+            </ul>
+            
+            </br>
+            <h3>Supported Engine Versions</h3>
+            <p>This plugin is compatible with Unreal Engine 5.x versions.</p>
+            
+            </br>
+            <h3>Installation</h3>
+            <h4>Method 1: Fab / Epic Games Launcher</h4>
+            <ul class="duties-list">
+                <li>Open the Epic Games Launcher</li>
+                <li>Go to <strong>Fab / Unreal Engine Plugins</strong></li>
+                <li>Download <strong>Color Picker</strong></li>
+                <li>Add it to your project</li>
+                <li>Enable the plugin in <strong>Edit → Plugins</strong></li>
+                <li>Restart the editor if prompted</li>
+            </ul>
+            
+            <h4>Method 2: Manual Installation</h4>
+            <ul class="duties-list">
+                <li>Copy the <code>ColorPicker</code> folder into:</li>
+                <pre>YourProject/Plugins/</pre>
+                <li>Open the project</li>
+                <li>Enable the plugin in <strong>Edit → Plugins</strong></li>
+                <li>Restart Unreal Engine</li>
+            </ul>
+            
+            </br>
+            <h3>Plugin Content Location</h3>
+            <p>All assets are located under:</p>
+            <pre>ColorPicker/Content</pre>
+            <p>This includes Widget Blueprints, Materials, and Textures.</p>
+            
+            </br>
+            <h3>Usage</h3>
+            <h4>Using the Widget Blueprints</h4>
+            <ul class="duties-list">
+                <li>Open your UI Widget Blueprint</li>
+                <li>Add one of the provided widgets:
+                    <ul>
+                        <li><code>WBP_ColorPicker</code></li>
+                        <li><code>WBP_ColorWheel</code></li>
+                        <li>Slider widgets</li>
+                    </ul>
+                </li>
+                <li>Bind to the exposed color output variables or events</li>
+                <li>Apply the selected color to materials, UI elements, or gameplay logic</li>
+            </ul>
+            
+            </br>
+            <h3>C++ Integration (Optional)</h3>
+            <p>The plugin exposes C++ functionality for advanced usage. The public headers are located in:</p>
+            <pre>ColorPicker/Source/ColorPicker/Public/</pre>
+            <p>You can include and extend the module in your own C++ code.</p>
+            <h4>Example:</h4>
+            <pre> #include "FL_ColorPicker.h" </pre>
+            
+            </br>
+            <h3>Customization</h3>
+            <p>You may modify widget layouts, extend C++ functionality, reuse individual UI components, and customize materials and textures. All assets are editable and modular.</p>
+            
+            </br>
+            <h3>Troubleshooting</h3>
+            <ul class="duties-list">
+                <li>Ensure the plugin is enabled</li>
+                <li>Restart the editor after enabling</li>
+                <li>Check that the plugin content folder is visible in the Content Browser</li>
+                <li>For C++ projects, regenerate project files if needed</li>
+            </ul>
+
+            </br>
+            <h3>Support</h3>
+            <p>If you encounter issues or need assistance, please contact me via:</p>
+            <a href="https://www.linkedin.com/in/louisgrange/?locale=en_US" target="_blank">LinkedIn</a>
+            
+            </br>
+            <h3>License</h3>
+            <p>This plugin is distributed under the Fab Marketplace license.</p>
+
+            <section class="fab-section">            
+                </br>
+                <h3>Fab Marketplace</h3>
+                <p>Access the Color Picker Plugin on the official Fab Marketplace:</p>
+                </br>
+                <a href="https://www.fab.com/listings/213173ba-f718-4fbc-845d-b37054feda55" target="_blank" class="button">
+                    <span>View Color Picker on Fab</span>
+                </a>
+            </section>
+        </div>
+
+        <span class="technology">Unreal Engine</span>
+        <span class="technology">Blueprints/C++</span>
+    </div>
+    <script>
+        let currentIndex = 0;
+        const slider = document.getElementById('slider');
+        const totalSlides = slider.children.length;
+
+        function moveSlide(step) {
+            currentIndex = (currentIndex + step + totalSlides) % totalSlides;
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+    </script>
+</body>
+</html>

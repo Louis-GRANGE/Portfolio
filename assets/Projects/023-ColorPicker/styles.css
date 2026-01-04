@@ -1,0 +1,46 @@
+/* Modal styles */
+h3 {
+    border-bottom: 2px solid #4a90e2;
+}
+pre {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: "Courier New", Courier, monospace;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Simple Slider Styles */
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+.slides img {
+    width: 100%;
+    display: block;
+}
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 10;
+}
+.slider-btn:hover { background: rgba(0, 0, 0, 0.8); }
+.prev { left: 0; border-radius: 0 5px 5px 0; }
+.next { right: 0; border-radius: 5px 0 0 5px; }
