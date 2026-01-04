@@ -103,29 +103,6 @@
 
 })(jQuery);
 
-
-window.addEventListener('load', () => {
-    const hash = window.location.hash;
-    if (hash) {
-        const targetCard = document.querySelector(hash);
-        if (targetCard) {
-            // Small timeout ensures the page is fully ready before scrolling/clicking
-            setTimeout(() => {
-                targetCard.scrollIntoView({ behavior: 'smooth' });
-                targetCard.click();
-            }, 100);
-        }
-    }
-});
-
-// Safety check: only add listener if the close button exists
-const closeBtn = document.querySelector('.close');
-if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-        // Removes the #hash from the URL without reloading the page
-        history.replaceState(null, null, window.location.pathname);
-    });
-}
 /*
 HideShowChatBot();
 function HideShowChatBot() {
